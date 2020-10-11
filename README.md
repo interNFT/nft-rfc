@@ -16,8 +16,7 @@ After initial review by the Project Team, for triage and labeling, the issue wil
 Once an RFC enters the review process, this will be time-limited to 14-day review and decision cycles.
 
 DRAFT PROPOSAL ->  14-DAY OPEN REVIEW CYCLE -> LAST CALL yyyy-mm-dd -> FINAL RECOMMENDATION 
--> ACCEPTED \\ REPLACED -> SUPERSEDED by RFCxxx
-OR\-> REJECTED -> SUPERSEDED by RFCxxx
+-> ACCEPTED OR REJECTED  // -> SUPERSEDED by RFCxxx
 
 OR  \->   ABANDONED
                              
