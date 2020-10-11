@@ -27,7 +27,7 @@ Why should we not do this?
 
 What other designs have been considered? What is the impact of not doing this?
 
-## Adoption strategy
+## Adoption strategy
 
 If we implement this proposal, how could this become broadly used as an Interchain Standard?
 
