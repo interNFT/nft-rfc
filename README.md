@@ -15,8 +15,11 @@ Each InterNFT RFC submitted will follow a quick-paced and structured process fro
 After initial review by the Project Team, for triage and labeling, the issue will be tagged and may be progressed through the review phases.
 Once an RFC enters the review process, this will be time-limited to 14-day review and decision cycles.
 
-DRAFT PROPOSAL ->  14-DAY OPEN REVIEW CYCLE -> LAST CALL yyyy-mm-dd -> FINAL RECOMMENDATION -> ACCEPTED \\ REPLACED -> SUPERSEDED by RFCxxx
-                             \->   ABANDONED                            \-> REJECTED -> SUPERSEDED by RFCxxx
+DRAFT PROPOSAL ->  14-DAY OPEN REVIEW CYCLE -> LAST CALL yyyy-mm-dd -> FINAL RECOMMENDATION 
+-> ACCEPTED \\ REPLACED -> SUPERSEDED by RFCxxx
+OR\-> REJECTED -> SUPERSEDED by RFCxxx
+
+OR  \->   ABANDONED
                              
 ### RFC Status Tags:
 DRAFT PROPOSAL: At this stage the RFC submission is work in progress, without a being ready for formal review. This should present a good initial draft on which to get feedback (so consider using Discord for earlier, formative discussions).
