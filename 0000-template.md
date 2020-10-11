@@ -2,35 +2,38 @@
 
 Brief explanation of the recommendation or technical proposal.
 
-## Basic example
+## Context
 
-What would this look like as a technical description and/or code snippet? (Omit if not relevant). 
-
-## Motivation
-
-Why should we do this? What use cases does it support? What problems does it solve? What are the expected outcomes if this is not done, as well as if it is implemented as proposed?
+Why is this recommendation needed? What use cases does it support? What problems does it solve? What are the expected outcomes if this is not done, as well as if it is implemented as proposed?
  
-Describe the issues and constraints you are trying to solve in generic terms (without coupling too closely with the solution or recommendation you have in mind).
-If this specific RFC is not accepted, the motivation could be used to develop alternative solutions.
+Describe the issues and constraints you are trying to solve in generic terms, without making it too closely coupled with a specific solution or recommendation you have in mind, so this could be used to develop alternative solutions.
 
-## Detailed Recommendation, or solution design
+## Proposal
 
-Explain your recommendation and design simply enough for someone who is not familiar with how this could be technically implemented, to understand the rationale. Then provide enough detail and specifications for this to be implemented by someone with the relevant technical expertise. 
+Start by explaining your recommendation/design in a simple enough way for a non-technical reader to understand the rationale. Then provide a technical description with sufficient detail and specifications for this to be implemented by a person with the relevant expertise. 
 Include usage examples and edge-cases.
 Define any new terminology.
 
-## Drawbacks of the proposal
+### Basic example/s
 
-Why should we not do this?
+What would this look like as a recommendation statement and/or code snippet? (Omit if not relevant). 
+
+## Consequences
+What outomes could be expected if this proposal is implemented as a recommendation.
+### Positive
+### Negative
+### Neutral
 
 ## Alternatives
 
-What other designs have been considered? What is the impact of not doing this?
+What other design proposals or recommendations have been considered?
 
-## Adoption strategy
+## Adoption
 
-If we implement this proposal, how could this become broadly used as an Interchain Standard?
+If the proposal is implemenented, how could this recommendation/design become broadly used as an Interchain Standard?
 
 ## Unresolved questions
 
 Optional, but suggested for first drafts. What parts of the design are still TBD?
+
+## References
