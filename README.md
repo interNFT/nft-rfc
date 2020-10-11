@@ -21,12 +21,12 @@ DRAFT PROPOSAL ->  14-DAY OPEN REVIEW CYCLE -> LAST CALL yyyy-mm-dd -> FINAL REC
 OR  \->   ABANDONED
                              
 ### RFC Status Tags:
-DRAFT PROPOSAL: At this stage the RFC submission is work in progress, without a being ready for formal review. This should present a good initial draft on which to get feedback (so consider using Discord for earlier, formative discussions).
-OPEN REVIEW: RFC is fully developed and subjected to a 14-day open review process.
-LAST CALL <date for the last call>: provides a deadline after which no further updates are accepted (changes would require a new RFC to supersede).
-FINAL RECOMMENDATION: RFC is either accepted or rejected for inclusion in the InterChain standard.
-SUPERSEDED by RFCxxx: A new RFC replaces the last proposal.
-ABANDONED: the RFC is no longer pursued by the original authors.
+* DRAFT PROPOSAL: At this stage the RFC submission is work in progress, without a being ready for formal review. This should present a good initial draft on which to get feedback (so consider using Discord for earlier, formative discussions).
+* OPEN REVIEW: RFC is fully developed and subjected to a 14-day open review process.
+* LAST CALL <date for the last call>: provides a deadline after which no further updates are accepted (changes would require a new RFC to supersede).
+* FINAL RECOMMENDATION: RFC is either accepted or rejected for inclusion in the InterChain standard.
+* SUPERSEDED by RFCxxx: A new RFC replaces the last proposal.
+* ABANDONED: the RFC is no longer pursued by the original authors.
 
 # Acceptance Criteria
 * Does not a duplicate a pre-existing RFC, or has sufficient reason to supersede an existing RFC
