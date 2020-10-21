@@ -4,8 +4,8 @@ title: NFT Specification Standard
 stage: draft
 category: meta
 kind: meta
-author: Shaun Conway <shaun.conway@ixo.world>
-created: 2020-02-
+author: Shaun Conway @ig-shaun
+created: 2020-02-21
 modified: 
 ---
 
