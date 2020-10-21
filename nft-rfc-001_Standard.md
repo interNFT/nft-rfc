@@ -5,7 +5,7 @@ stage: draft
 category: meta
 kind: meta
 author: Shaun Conway @ig-shaun
-created: 2020-02-21
+created: 2020-10-21
 modified: 
 ---
 
@@ -45,6 +45,7 @@ The NFT-RFC header contains standard metadata relevant to the standard:
 
 `category` - NFT-RFC category, one of the following:
 - `meta` - A standard about the ICS process
+- `NFT/USECASES` - Use cases and requirements which can inform the development of standards.
 - `NFT/INTERFACE` - A standard about an inter-blockchain communication system core transport, authentication, and ordering layer protocol.
 - `NFT/METADATA` - A standard about an inter-blockchain communication system application layer protocol.
 
