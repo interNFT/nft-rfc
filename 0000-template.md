@@ -1,39 +1,75 @@
-## Summary
+---
+nft-rfq: (number)
+title: (short title)
+stage: (current process stage)
+category: (nft-rfq category)
+kind: (nft-rfq kind)
+author: (primary & additional authors)
+created: (creation date)
+modified: (modification date)
+requires: (optional list of  numbers)
+required-by: (optional list of nft-rfq numbers)
+implements: (optional list of nft-rfq numbers)
+---
 
-Brief explanation of the recommendation or technical proposal.
+## Synopsis
 
-## Context
+(high-level description of and rationale for specification)
 
-Why is this recommendation needed? What use cases does it support? What problems does it solve? What are the expected outcomes if this is not done, as well as if it is implemented as proposed?
- 
-Describe the issues and constraints you are trying to solve in generic terms, without making it too closely coupled with a specific solution or recommendation you have in mind, so this could be used to develop alternative solutions.
+### Motivation
 
-## Proposal
+(rationale for existence of standard)
 
-Start by explaining your recommendation/design in a simple enough way for a non-technical reader to understand the rationale. Then provide a technical description with sufficient detail and specifications for this to be implemented by a person with the relevant expertise. 
-Include usage examples and edge-cases.
-Define any new terminology.
+### Definitions
 
-### Basic example/s
+(definitions of any new terms not defined in common documentation)
 
-What would this look like as a recommendation statement and/or code snippet? (Omit if not relevant). 
+### Desired Properties
 
-## Consequences
-What outomes could be expected if this proposal is implemented as a recommendation.
-### Positive
-### Negative
-### Neutral
+(desired characteristics / properties of protocol, effects if properties are violated)
 
-## Alternatives
+## Technical Specification
 
-What other design proposals or recommendations have been considered?
+(main part of standard document - not all subsections are required)
 
-## Adoption
+(detailed technical specification: syntax, semantics, sub-protocols, algorithms, data structures, etc)
 
-If the proposal is implemenented, how could this recommendation/design become broadly used as an Interchain Standard?
+### Data Structures
 
-## Unresolved questions
+(new data structures, if applicable)
 
-Optional, but suggested for first drafts. What parts of the design are still TBD?
+### Sub-protocols
 
-## References
+(sub-protocols, if applicable)
+
+### Properties & Invariants
+
+(properties & invariants maintained by the protocols specified, if applicable)
+
+## Backwards Compatibility
+
+(discussion of compatibility or lack thereof with previous standards)
+
+## Forwards Compatibility
+
+(discussion of compatibility or lack thereof with expected future standards)
+
+## Example Implementation
+
+(link to or description of concrete example implementation)
+
+## Other Implementations
+
+(links to or descriptions of other implementations)
+
+## Refences
+
+(links to quoted and useful references)
+
+## History
+
+(changelog and notable inspirations / references)
+
+## Copyright
+
+All content herein is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
