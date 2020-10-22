@@ -1,15 +1,15 @@
 ---
-nft-rfq: (number)
+nft-rfc: (number)
 title: (short title)
 stage: (current process stage)
-category: (nft-rfq category)
-kind: (nft-rfq kind)
+category: (nft-rfc category)
+kind: (nft-rfc kind)
 author: (primary & additional authors)
 created: (creation date)
 modified: (modification date)
 requires: (optional list of  numbers)
-required-by: (optional list of nft-rfq numbers)
-implements: (optional list of nft-rfq numbers)
+required-by: (optional list of nft-rfc numbers)
+implements: (optional list of nft-rfc numbers)
 ---
 
 ## Synopsis
