@@ -62,7 +62,7 @@ implements: (optional list of nft-rfc numbers)
 
 (links to or descriptions of other implementations)
 
-## Refences
+## References
 
 (links to quoted and useful references)
 
