@@ -15,32 +15,32 @@ This standard describes a set of interfaces that can be utilised to build a non-
 
 NFT or Non Fungible Tokens refer to a wide category of data structures with the majority of the standards being defined for Smart Contract implementations. When defining an NFT structure at the native chain code level there are currently no basic NFT interfaces that a type can implement to be classified as an NFT structure. Also, the NFT definitions at the Smart Contract level account for handling the ownership of the NFTs at the Contract level, with no common definition of a wallet which can be used to represent the account ownership for different NFT implementations.
 
-This standard defines a very basic NFT interface with a minimum set of methods, that all NFTs like data structures may implement, and to define a wallet interface to represent the account ownership of the NFTs. The standard also defines a base method implementations of the NFT and NFT wallet interfaces with create, mutate metadata, change ownership, burn and inter-chain ownership transfers through inter-chain communication protocols.
+This standard defines a very basic NFT interface with a minimum set of methods, that all NFT like data structures may implement, and to define a wallet interface to represent the account ownership of these NFTs. The standard also defines base method signatures of the NFT and NFT wallet interfaces for create, mutate metadata, change ownership, burn and inter-chain ownership transfers through inter-chain communication protocols.
 
 ### Motivation
 
 The current set of common NFT definitions are dominated by the [ERC721](https://eips.ethereum.org/EIPS/eip-721) interface definitions which are biased towards smart contract-based definitions of NFT. A chain app code native definition of NFT may not necessarily be bound by the restrictions that a smart contract definition of NFT will be, allowing for the interface to be made simpler while adding more native implementation relevant methods. Also, the smart contract-based approach for NFT implementation does not account for a common native wallet that may hold ownership representations of multiple NFT implementations and allow for a singular transfer NFT ownership transaction implementation.
 
 The main motivation of the standard is to:
-* Define a very basic NFT interface that all data structures must implement to be classified as an NFT and an NFT wallet interface that can hold the ownership of all such NFT implements for an account.
-* Define a base implementation of the NFT and NFT wallet interfaces methods with mint, mutate metadata and burn transactions for base NFT and ownership transfers for the base NFT wallet implementation.
+* Define a very basic NFT interface that all data structures must implement to be classified as an NFT and an NFT wallet interface that can hold the ownership of all such NFT implementations for an account.
+* Define a base implementation of the NFT and NFT wallet interfaces method signatures with mint, mutate metadata and burn transactions for base NFT and ownership transfers for the base NFT wallet implementation.
 * Define a metadata interface to maintain the NFT metadata. This interface may further be utilized for storing metadata for objects from other datastructures too.
 * Extend the transfer NFT functionality of the base NFT wallet implementation to define packet data structure, app logic and encoding for interchain NFT ownership transfers and define the ICS specification.
 
 This will allow all projects in the inter-chain ecosystem to:
 * Define their own implementation of NFT structures with custom mint, mutation and burn transaction logic maintained at their app chain.
 * Have a common wallet implementation for all NFT implementations which can hold ownership information of multiple kinds of NFTs from multiple chains in a single wallet for an account.
-* Natively send the ownership of the NFT across chains through inter-chain communication protocols without a requirement for permissioned bridges or token transformation/pegging.
+* Natively send the ownership of NFTs across chains through inter-chain communication protocols without a requirement for permissioned bridges or token transformation/pegging.
 
 ### Definitions
 
 * `NFT`: An NFT or a Non-fungible Token is a structured unit of data that represents the properties of a unique entity, or the entity itself( if it’s a digital asset and all its properties are contained by the NFT). In this document `NFT` will also refer to a basic interface, implementation of which will classify a structure as an `NFT`.
 
-* `NFT ID`: A reference to the `NFT`. The address is convertible to a String for reference.
+* `NFT ID`: A reference to the `NFT`. The address is convertible to a String for reference. The `NFT ID` MUST conform to the DID specification and be resolvable across the inter-chain ecosystem.
 
 * `NFT Wallet`: an array of references(`NFT ID`) to Account ID.
 
-* `NFT Classification ID`: an identifier of the type or class of the NFT.
+* `NFT Classification ID`: an identifier of the type or class of an `NFT`.
 
 * `NFT Metadata`: any metadata related to the NFT. It is defined by an `ID`, `Value` and `Type`
 
@@ -56,10 +56,10 @@ The NFTs are addressed by the same hash of the immutable properties, enforcing s
 NFT wallet object implements the wallet and transfer logic and is agnostic to other custom logic associated with the underlying NFT implementation allowing for a singular wallet implementation for all the defined NFT interface.
 
 **Implementation flexibility**
-The NFT module implements all the basic functional requirements of an NFT with no restrictions on the extension of the functionalities to account for more complex application logic, as long as the implementation satisfies the NFT interface.
+The NFT interface implementation must allow for all the basic functional requirements of an NFT with no restrictions on the extension of the functionalities to account for more complex application logic, as long as the implementation satisfies the NFT interface.
 
 **Reduce load/dependence on inter-chain protocol**
-The two objects comprising the NFT functionality, NFT & NFT wallet do no need to communicate with each other to sync their state at each transaction. They function independently only with only a few transactions requiring dependence on the inter-chain protocol(interchain send, burn transactions).
+The two objects comprising the NFT functionality, NFT & NFT wallet sould not need to communicate with each other to sync their state at each transaction. They MUST function independently only with a few transactions requiring dependence on the inter-chain protocol(interchain send, burn transactions).
 
 **Commodification**
 All the NFTs are represented with a class or classification allowing for transactions to address NFTs though classes instead of direct addresses and hence allowing for NFT commodification.
