@@ -11,7 +11,7 @@ modified:
 
 ## Synopsis
 
-This standard describes a set of interfaces that can be utilised to build an non-fungible token.
+This standard describes a set of interfaces that can be utilised to build a non-fungible token implementation native to chain code.
 
 NFT or Non Fungible Tokens refer to a wide category of data structures with the majority of the standards being defined for Smart Contract implementations. When defining an NFT structure at the native chain code level there are currently no basic NFT interfaces that a type can implement to be classified as an NFT structure. Also, the NFT definitions at the Smart Contract level account for handling the ownership of the NFTs at the Contract level, with no common definition of a wallet which can be used to represent the account ownership for different NFT implementations.
 
