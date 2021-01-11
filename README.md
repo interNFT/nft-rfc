@@ -62,3 +62,6 @@ Interchain NFT + Metadata RFPs may be used in full or in part, at any stage of t
 
 * NFT-RFC-001 Specification Standard for Interchain NFTs and Metadata
 * NFT-RFC-002 Use Cases and Requirements Working Document
+* NFT-RFC-003 NFT Interface
+* NFT-RFC-004 interNFT Standard
+* NFT-RFC-005 NFT Rights
