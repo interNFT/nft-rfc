@@ -65,3 +65,4 @@ Interchain NFT + Metadata RFPs may be used in full or in part, at any stage of t
 * NFT-RFC-003 NFT Interface
 * NFT-RFC-004 interNFT Standard
 * NFT-RFC-005 NFT Rights
+* NFT-RFC-007 NFT Layers
