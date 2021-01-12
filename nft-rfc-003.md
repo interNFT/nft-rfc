@@ -154,6 +154,7 @@ TBD
 
 ## Other Implementations
 
+* Initial Cosmos NFT Module https://github.com/cosmos/modules/tree/master/incubator/nft
 * PersistenceSDK assets module https://github.com/persistenceOne/persistenceSDK/tree/master/modules/assets
 
 ## References
