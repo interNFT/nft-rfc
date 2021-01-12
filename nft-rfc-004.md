@@ -95,6 +95,7 @@ The NFT module is implemented at the native chain application logic level instea
 
 An interface that implements the NFT interface, adding interoperability functionalities to it 
 
+```go
 InterNFT interface {
 
     // Implementing the NFT interface
@@ -118,13 +119,14 @@ InterNFT interface {
     // CanBurn returns a boolean telling if the interNFT can be burnt or not given the current height
    CanBurn(Height) bool
 }
+```
 
 #### Height interface
 
 An interface to define a block height type for a chain, used as a metric of time.
 
-{
-    Height interface {
+```go
+Height interface {
 
     // Count returns the block count for the Height
    Count() string
@@ -133,11 +135,13 @@ An interface to define a block height type for a chain, used as a metric of time
     // IsGraterThat returns a Boolean to tell if the Height is grater than a given Height/Current Height
    IsGraterThat(Height) bool
 }
+```
 
 #### Signature interface 
 
 An interface for any type that represents a cryptographic signature that can be verified
 
+```go
 Signature interface {
 
     // String returns the human-readable string format of the Signature
@@ -155,11 +159,13 @@ Signature interface {
     // HasExpired returns a boolean to tell if the Signature has expired given a Height/Current Height interface
     HasExpired(Height) bool
 }
+```
 
 #### Signatures interface 
 
 An interface for a container of a collection of Signatures. The Interface handles the deterministic operations on the Signature collection.  
 
+```go
 Signatures interface {
 
     // Get returns a Signature stored in the Signatures given an Identifier for it
@@ -167,16 +173,20 @@ Signatures interface {
 
     // Add appends a given Signature with the Signatures Collection
    Add(Signature) error
+   
    // Add removes a given Signature from the Signatures Collection
    Remove(Signature) error
+   
    // Add mutates a given Signature in the Signatures Collection
    Mutate(Signature) error
 }
+```
 
 #### Fact interface 
 
 An interface to define a type for any kind of information is the system which is non-consequential to the application logic but has to be stored for provenance. 
 
+```go
 Fact interface  {
 
     // String returns the human-readable string format of the information stored by the Fact
@@ -188,11 +198,13 @@ Fact interface  {
     // Signatures return the cyptographic signatures on the Fact as Signatures interface 
    Signatures() Signatures
 }
+```
 
 #### Property interface
 
 An interface to define any kind of property associated with an interNFT
 
+```go
 Property interface {
 
     // Name returns the name of the Property
@@ -204,11 +216,13 @@ Property interface {
    // Fact returns the Fact associated with the Property
    Fact() Fact
 }
+```
 
 #### Properties interface 
 
 An interface for a container of a collection of Properties. The Interface handles the deterministic operations on the Property collection.  
 
+```go
 Properties interface {
 
     // ID returns the identifier, of the Properties, as an ID interface
@@ -216,16 +230,20 @@ Properties interface {
 
     // Add appends the given Property with the Properties collection 
    Add(Property) error
+   
    // Add removes the given Property from the Property collection
    Remove(Property) error
+   
    // Add mutates the given Property in the Property collection
    Mutate(Property) error
 }
+```
 
 #### Properties interface 
 
 An interface for any type of Trait associated with a Classification of interNFT 
 
+```go
 Trait interface {
 
     // Name returns the name of the Trait
@@ -237,21 +255,24 @@ Trait interface {
     // IsMutable returns a Boolean to tell if a property value of Trait can be mutated or not
    IsMutable() bool
 }
-
+```
 #### Traits interface 
 
 An interface for a container of a collection of Traits. The Interface handles the deterministic operations on the Trait collection. 
 
+```go
 Traits interface {
 
     // Get returns a Trait for the given ID
    Get(ID) Trait
 }
+```
 
 #### Classification interface 
 
 An interface for a representation of type/class/denomination of the interNFT
 
+```go
 Classification interface {
 
     // Name returns a human redable name for the classification
@@ -263,11 +284,11 @@ Classification interface {
     // Traits returns the traits associated with the Classification
    Traits() Traits
 }
-
+```
 
 ## Backwards Compatibility
 
-This interface definition backwards compatible with the NFT interface defined in nft-rfc-003
+This interface definition backwards compatible with the NFT interface defined in [nft-rfc-003](./nft-rft-003)
 
 ## Forwards Compatibility
 
