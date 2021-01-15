@@ -11,164 +11,112 @@ modified:
 # NFT RFC 005 NFT Rights
 
 # Motivation
-NFTs embody and confer specific rights. This specification describes how 
-rights relate to the Interchain NFT work.
+This specification describes NFT rights in the context of Interchain NFTs and Metadata. 
+Interchain NFTs are containers for resource identifiers and for the rights relating to the identified resources, regardless of where these resources are located. 
+This implies that it should be possible to access across blockchain networks the encodings of NFT rights and associated object capabilities which are conferred by these rights. It should be possible to exercise control over NFT rights and to execute object capabilities across networks, using Inter-Blockchain Communication protocols. 
 
 # Technical Specification
 
 ## Title/Property Pattern
 
-We model the rights in Non-fungible Tokens based on a token/resource
-pattern. This pattern separates property rights for the token itself
-from rights in a related resource that are conferred upon the token\'s
-owner or representative.
+We model Non-fungible Token rights as being Intrinsic or Extrinsic to the token. 
+The intrinsic rights properties of an NFT define what the owner/contoller of the token is capable of doing to change the state of the token and its related on-chain metadata. Intrinsic rights therefore give the token owner the capabilities to change ownership of, transfer, exclude access to, control, use, or possess a token and its on-chain metadata.
+The extrinsic rights properties of an NFT define what the owner/controller of the token is capable of doing in relation to the uniquely-identified token resources which are related to an NFT. Extrinsic rights therefore gove the token owner the capabilities to own, transfer, exclude access to, control, use, or possess resources which may be on-chain, or resources in other digital systems, or physical-world resources. 
 
-This pattern allows us to cleanly distinguish between the issues of
-ownership (transfer, exclusion, control, use, possession) as token
-rights, which are realized entirely on-chain and therefore
-computational, and resource rights in the real world, which may be
-dependent on interactions with non-digital systems, organizations, and
-processes. With these two pillars, token rights and resource rights
-allow us to model arbitrarily complex, digitally enabled rights systems.
+This pattern makes a clear distinction between Token Rights which can be fully executed using the capapilities of a blockchain and Respource Rights, which are executed using the capabilities of other blockchain functions which are not directly related to the token, or other digital systems, or systems in the physical world, which may be dependent on interactions with all types of systems, processes and organisations.
+
+These two patterns of Token Rights and Resource Rights allow us to model arbitrarily complex, digitally-enabled systems for defining and operationalising rights and capabilities over uniquely identifiable objects.
 
 ### A Few Examples
-A NFT Theater Ticket issued, bought, and re-sold entirely on-chain
+An NFT Theater Ticket issued, bought, and re-sold entirely on-chain
 according to parameters established by the Theater Company. The ticket
-gives its owner the right to attend a given show, if it occurs and the
-bearer meets any other requirements of the venue, such as wearing proper
-attire or behaving with decorum, or even evidence of a vaccination or a
-biometric verification of identity.
+gives its owner the right to attend a given show, if this takes place and the
+bearer meets all the other requirements set by the venue, such as wearing proper
+attire, behaving with decorum, passing biometric verification of identity, 
+or even providing evidence of immunisation.
 
 **Token rights**: resalable bearer instrument with constraints.\
-**Resource Rights**: the bearer is entitled to attending a specific show
-at a specific time, subject to venues rules.
+**Resource Rights**: the bearer is entitled to attend a specific show
+at a specific time, subject to the rules and restrictions of the venue.
 
-An NFT Property Title issued, bought, and re-sold entirely on-chain
-according to parameters established by the local housing authority. The
-title gives its owners the legally recognized rights of property
-ownership. Courts, banks, and civic institutions recognize those legal
-rights through verification of ownership represented by the title.
+An NFT Property Title issued, bought and re-sold entirely on-chain
+according to parameters established by the local housing authority. 
+The property title gives its owners legally recognized rights of property
+ownership. Courts, banks and civic institutions recognize these legal
+rights by verifying ownership of the Property Title token.
 
 **Token rights**: delegatable, transferrable, provable title
 (cryptographic proof required for transfer and proof of ownership)\
-**Resource rights**: ownership in real property recognized by a specific
-jurisdiction
+**Resource rights**: ownership in physical property, as represented by
+a digital Property Title, which is contained by an NFT, is recognized 
+as legally valid within the relevant jurisdiction
 
-An NFT Pay-per-View Venue Media License issued, bought, and re-sold
+An NFT Pay-per-View Media License issued, bought, and re-sold
 entirely on-chain according to parameters established by the copyright
-holder. The licenses gives its holder the legal right to play specific
-media (such as a boxing match) in commercial venues, such as a local
-restaurant or bar, for a specific price, as evidenced by on-chain
-payment. This license is owned by a fan and delegated to the venue for
-the actual performance.
+holder. The license gives its holder the legal right to use (and capability to access)
+a specific media asset (such as the broadcast of a boxing match), within a specific 
+context, such as a commercial public venue (local restaurant or bar).
+Access to the media is provided on evidence that the specifed license fee
+has been paid (through an on-chain payment). 
+This license could be owned by a fan and delegated to the venue for patrons to view.
 
-**Token rights**: a delegatable, resalable cryptographically secured
+**Token rights**: a delegatable, resalable, cryptographically secured
 authorization\
-**Resource rights**: performance rights for a specific piece (or
-catalog) of media in a specific context with payment of a pre-arranged
-price.
+**Resource rights**: Viewing rights for an identified media asset, within a specific 
+uniquely identified context (such as a specific venue on a specific data), 
+subject to any associated rights modifiers, and requiring evidence of payment.
 
-This distinction, between the ownership rights in a 100% digital asset
-and a different set of rights conferred to whoever owns that asset,
-allows us to model arbitrarily complex bundles of rights which can be
-created, bought, sold, and verified through distributed ledgers.
+Thw distinction between rights of ownership in a digital resource (such as media asset)
+and the rights to use the resource, allows arbitrarily complex compositions of rights 
+and capabilities related to digitally represented resources which can be created, authenticated, owned, bought,
+sold, rented, etc.
 
-## NFTs as Constrained Tokens
-NFTs are constrained tokens, which have one or more constraints that
-must be met for exercising any rights associated with that token. Pure
-bearer tokens represent rights that are conferred to the holder of those
-tokens without externality. Interchain NFTs are not bearer tokens. They
-are constrained by one or more mechanisms, the most basic is
-cryptographic proof of control for transfers.
+## NFT Rights are Constrained
+All NFTs have constraints on the capabilities which can be exercised in relation to Token Rights and Resource Rights.
+In contrast, Bearer Tokens confer rights to whoever holds the token, which enables capabilities associated with these rights to be exercised, without constraints.
 
-### Co-artifacts
-The canonical constraint on blockchain-based assets is proof-of-control:
-in one form or another, a party asserting a token right demonstrates
-access to a private secret that unlocks a cryptographic puzzle. The
-traditional mechanism for this is a hash of a public key stored
-on-chain, for which the actual key and a message signed with the
-matching private key serve as co-artifacts for authorizing a
-transaction. Advanced cryptographic operations, like Schnorr signatures,
-provide additional logical operations that can be used to evaluate such
-co-artifacts, for example, enabling an n-of-m rules for use.
+### Cryptographic Constraints
+The primary constraint is that the owner of a token has to demonstrate control over the cryptographic key which is required for changing the state of the token or of its metadata. The party asserting a token right, or wanting to exercise the capabilities associated with a right, must demonstrate
+that they have control over a private secret that unlocks a cryptographic puzzle. Blockchains typically enable this by storing a hash of a private key as a public artifact. The holder of the private key must be able to demonstrate that they can derive the hash using their private key as a co-artifact, to sign messages which are validated by the blockchain.  
+Advanced cryptographic operations, such as Schnorr signatures, provide additional logical operations that can be used to evaluate such
+co-artifacts. This may require constraints such as n-of-m signatures to be met, before a resultant capability can be exercised.
 
-A co-artifact could also be a Verified Credential of a particular kind.
-For example, a token that is good for one free beverage for any bearer
-who can provide a newly issued digital degree. Call it a \"graduation
-promotion token\". Or perhaps a token for access to a particular
-restaurant, if and only if, the bearer also has a verifiable vaccination
-credential. Finally, a co-artifact might be a \"verified credential\"
-which is a verifiable credential issued based on verifiable claims
-asserted by authorized reviewers who have evaluated underlying
-verifiable credentials against a specific set of criteria. (See the
-Impact Bond User Story for more details on these different types of
-verifiable/verified claims/credentials.)
+### Verifiable Credentials as constraints
+Verifiable Credentials can be used in versatile ways to define the rights and constrain the capabilities of token-holders.
+For example, a token which gives an identified student access to a personalised online course, which is constrained by the requirement that the student must present a Verifiable Credential issued by an academic institution, to prove that she has a prerequisite academic qualification.
+The prove their credential online, the student must be able to authenticate with a cryptographic signature that they control the decentralised identifier (DID) 
+which is the subject of the Verifiable Credential.
 
-### Biometric or Physical Constraints
-Tokens can also be bound by a biometric or physical constraint that must
-be applied by the operationalizing party. For example, a visual
-inspection of proper attire or a biometric match evaluated at the point
-of use. For example, an NFT could be directed to a party who can provide
-and satisfy a cryptographic commitment of a biometric template, such as
-a photo or facial recognition pattern. The NFT \*could\* directly
-include the biometric, but for privacy and confidentiality reasons, it
-is preferred that a hash of that template is used instead, leaving the
-propagation of the underlying template up to the individual. Either way,
-for the token to be used, that constraint must be met to the
-satisfaction of the operationalizing party. In all cases of real-world
-constraints, an operator must provide the final step in linking the
-digital to the physical. In this case, in providing the evaluation that
-the biometric template matches the bearer of the token before approving
-the use. Such biometric direction \*can\* also be achieved as a
-co-artifact if we empower an operator to issue a verifiable attestation
-that the biometrics have been satisfied and that artifact is then
-recognized by the operationalizing system.
+### Identification Constraints
+Token rights can be constrained by the requirement for the token-holder's to be identified, or to demonstrate required characteristics.
+This may be operationalised by a system of biometric authentication, or evaluation through visual inspection, or other forms of testing.
+Identification mechanisms such as this have serious privacy risks -- even in correlating a counter-party with identifying characteristics that are would be linked to a transaction which is visible on a public ledger.
+The constraints which are defined by an NFT and its metadata, and information that gets stored on-chain, must meet privacy and data protection requirements.
+How to operationalise identification systems that meet these requirements is beyond the scope of this specification.
 
 ### Legal Constraints
-Tokens may also represent rights or responsibilities assigned to, or
-involving, specific legal entities or categories of entities, for which
-legally acceptable proof of identity is required. For example, one could
-imagine a travel visa as a token authorizing the bearer to enter,
-reside, and work in a particular country, provided the bearer can
-produce a legitimate state-issued passport matching a particular legal
-name. Using the token would require a system (or an individual) to
-evaluate real-world passports for validity and applicability to a token
-bearer. Perhaps more simply, one might imagine a token as a pre-paid
-customs waiver for the import of restricted goods, which requires
-demonstration of legal identity acceptable to the customs office. This
-construct allows longer-lived digital tokens to be created, used,
-delegated, transferred, while deferring the external, legally specified
-constraints that may be imposed at the point of use using the most
-appropriate mechanisms. In some circumstances the legal identity might
-be digitally verified, in others, using traditional credentials like a
-passport. We anticipate that tokens related to supply chains and
-international travel will most likely be of this nature: the token
-represents one part of a complex set of requirements for execution,
-which must be accompanied by real-world artifacts as required by the
-relevant country.
+The rights contained by an NFT may be constrained by legal definitions, interpretations and systems within a specific jurisdiction and context. 
+Legal constraints may vary across jurisdictions and can change over time.
+For instance, invoking international treaties, a token-holder may have the capability to engage in commercial arbitration within a specified jurisdiction, to resolve a dispute over the right of ownership of physical property, for which the Property Title is asssociated with an NFT. 
 
 ## Requirements
-### R1 -- Specify rights and responsibilities
+### R1 -- Specify Rights and Capabilities
 
-NFT metadata must be able to specify associated rights and
-responsibilities. This includes token rights for realizing ownership of
-the token as well as resource rights afforded to an authorized bearer of
-the token.
+NFT metadata must be able to specify the rights and associated capabilities of a Token-holder.
+and resources which are identified by the token. 
+This includes both the Token Rights and Resource Rights.
 
-Token rights must be computationally evaluatable, including support for
-cross-chain atomic transactions.
+Token rights must be computationally evaluatable, with support for cross-chain operations.
 
-Resource rights must be either human readable or machine readable in a
-semantically rigorous manner. Human readable rights may be as simple as
-\"the bearer of this token is entitled to buy one, get one free on any
-Acme product.\" Provided the rights are understandable and enforceable.
-This includes arbitrarily complex legal agreements that may be
-associated with an NFT. Machine readable rights must use semantically
-rigorous representation such as RDF or domain-specific constrained
-vocabulary. In both cases, arbitrary rights and responsibilities must be
-representable.
+Resource rights must be either human readable, or machine readable in a semantically rigorous manner. 
+Human readable rights may be as simple as \"the bearer of this token is entitled to buy one, get one free on any
+Acme product.\" Provided the descrioption of these rights is understandable, unambiguous and enforceable in ways that satisfy the needs of the token-holder.
+This includes arbitrarily complex legal agreements which may be associated with an NFT. 
 
-### R2 -- Rights and responsibilities must be discoverable, understandable, and verifiable
+Machine readable rights must use semantically rigorous representation, such as RDF, or domain-specific constrained
+vocabulary. In both cases, arbitrary rights and capabilities must be representable and resolvable by software systems.
+
+### R2 -- Rights and capabilities must be discoverable, comprehensible and verifiable
 
 Rights innate to an NFT must be discoverable and verifiable. Prior to
 acquiring a token, a prospective buy must be able to achieve confidence
