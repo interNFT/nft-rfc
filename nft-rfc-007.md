@@ -36,20 +36,6 @@ functions they provide and the services they rely on from neighbor
 layers without concerns for the rest of the stack. As long as the
 interfaces between layers were conformant, then the entire stack works.
 
-
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px;word-break:normal;}
-.tg .tg-7od5{background-color:#9aff99;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-y698{background-color:#efefef;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-elvq{background-color:#fffc9e;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-pidv{background-color:#ffce93;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-90e1{background-color:#ffccc9;border-color:inherit;text-align:left;vertical-align:top}
-.tg { color: #000 }
-</style>
 <table class="tg">
 <thead>
   <tr>
@@ -112,23 +98,6 @@ did---the model itself is still used for education and illustration.
 The Interchain NFT Layer Model uses a similar abstraction layer approach
 to separate the functionality required by different elements of the solution.
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;
-  padding: 10px;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 10px;word-break:normal;}
-.tg .tg-7cvu{background-color:#96e1ff;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-eul9{border-color:inherit;color:#000000;font-size:xx-small;text-align:left;vertical-align:top; padding:1px; background-color:red; border: 1px solid red}
-.tg .tg-7od5{background-color:#9aff99;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-y698{background-color:#efefef;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-90e1{background-color:#ffccc9;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-61xu{background-color:#cbcefb;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-x6qq{background-color:#dae8fc;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-elvq{background-color:#fffc9e;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-pidv{background-color:#ffce93;border-color:inherit;text-align:left;vertical-align:top}
-</style>
 <table class="tg">
 <thead>
   <tr>
