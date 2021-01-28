@@ -133,20 +133,20 @@ a dam to support the production of hydroelectric power and is going through the 
 the UN’s International Climate Change Authority (UNFCCC).. 
 
 In this example we will use the name of a few companies representing the different authorities involved in the process: 
-* HydroElec Inc is the clean energy producer who issues a renewable energy certificate (REC) claim‒in the format of VC2, of having 
+* __HydroElec__ Inc is the clean energy producer who issues a renewable energy certificate (REC) claim‒in the format of VC2, of having 
   produced a number of Mw Hours of clean energy through its certified hydroelectric project. 
-* SustainCert is the certifying authority who certifies HydroElec Inc’s new hydroelectric dam project and issues VC1
-* CarbonAudit is the REC Claim Verification Agent who evaluates the producer’s CER claim and performs uses an approved method to transform 
+* __CleanEnergy Certifier__ is the certifying authority who certifies HydroElec Inc’s new hydroelectric dam project and issues VC1
+* __CarbonAudit__ is the REC Claim Verification Agent who evaluates the producer’s CER claim and performs uses an approved method to transform 
   this claim into Certified Emission Reduction Units and issues VC3s in the form of a Verified Carbon Emission Reduction. 
-* UNFCCC will act as the both governing body who certified CarbonAudit as a Claim Verification Agent and issues VC4 and as the issuing 
+* __UNFCCC__ will act as the both governing body who certified CarbonAudit as a Claim Verification Agent and issues VC4 and as the issuing 
   authority for the NFT IID that is produced from VC5
 
-1. SustainCerts gets certified by the UNFCCC to act as a Claim Verification Agent for the purposes of issuing Verified REC and receives VC4 
+1. CleanEnergy Certifier gets certified by the UNFCCC to act as a Claim Verification Agent for the purposes of issuing Verified REC and receives VC4 
    from the UNFCCC. 
-2. HydroElec Inc gets certified as a producer of REC Claims, with a subcategory of hydroelectric power, by SustainCerts who audited the 
-   installation of the new hydroelectric dam that was recently converted. HyrdoElec Inc receives VC1 from SustainCerts once this process is 
+2. HydroElec Inc gets certified as a producer of REC Claims, with a subcategory of hydroelectric power, by CleanEnergy Certifier who audited the 
+   installation of the new hydroelectric dam that was recently converted. HyrdoElec Inc receives VC1 from CleanEnergy Certifier once this process is 
    complete. 
-3. Once HydroElec Inc has their REC Claim Issuing Certification from SustainCerts, they turn on their new dam and allow the turbines to start 
+3. Once HydroElec Inc has their REC Claim Issuing Certification from CleanEnergy Certifier, they turn on their new dam and allow the turbines to start 
    producing energy. Each turbine has its own, individual IOT device, which outputs a claim after every kilowatt hour of produced energy, 
    including a reference to the VC1 HydroElec Inc received above. Each of the individual claims output by each turbine’s IOT device is a VC2
 4. As the turbines IOT devices produce the individual VC2s they are registered on a blockchain, with the actual VC2 being stored in a digital 
