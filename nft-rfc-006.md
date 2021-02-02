@@ -513,7 +513,8 @@ Finally, DID Documents are defined using an abstract data model,
 allowing any number of serializations, with initial support for JSON and
 JSON-LD serializations. CBOR and CBOR-LD are also highly anticipated for
 their ability to dramatically reduce the size of DID Documents. Other,
-future serializations are also possible without losing conformance to the specification.
+future serializations are also possible without losing conformance to 
+the specification.
 
 ### Lessons Learned from DIDs
 
@@ -531,7 +532,7 @@ Second, avoid unnecessary public correlation. DID Documents provide the
 option of embedding service endpoints, which may themselves be present
 in multiple DID Documents. For example, you \*could\* add a Twitter
 address as a service endpoint in several different DIDs. This would link
-those DIDs to each other in a non-verifiable yet undisputable way: while
+those DIDs to each other in a non-verifiable, yet undisputable way: while
 observers could not directly tell if those service endpoints mean that
 the Twitter account controls those DIDs, they do gain a point of
 observation for consideration in evaluating that correlation. For many,
@@ -550,9 +551,9 @@ affords significant innovation even as it invites endless debate on
 which properties get to be defined where---a decision that has
 significant impact on ubiquitous adoption.
 
-Finally, DIDs are NOT signed documents. The only verification afforded
-by DIDs is that by executing the process defined in the DID Method,
-whatever the result is \*is\* the verified DID Document. This means that
+Finally, DID Documents are NOT signed documents. The only verification afforded
+for DID Documents is that by executing the process defined in the DID Method,
+whatever the result is **is** the verified DID Document. This means that
 you MUST trust the software that performs this resolution, either by
 reputation or because you wrote it yourself. This choice was informed by
 a tricky catch-22 where DID identifiers are a result of cryptographic
@@ -576,15 +577,18 @@ the extant encodings use non-ascii characters.
 Proposal 
 ---------
 
-**First**, create IIDs as an interoperable family DIDs with additional
-properties. Each IID \"namespace\"---to use the CAIP term---defines its
-own Interchain compatible DID method, e.g., did:erc721, did:cosmos,
-did:iov, did:etc. DID Methods that support IID functionality define
-themselves as an IID Method. IID semantics, shared among different IID
+**First**, create IIDs as an interoperable family DIDs Methods with 
+additional properties. Each IID \"namespace\"---to use the CAIP term---
+defines its own Interchain compatible DID method, e.g., did:erc721, 
+did:cosmos, did:iov, did:etc. DID Methods that support IID functionality
+define themselves as an IID Method with method-specific properties in its
+DID Documents, known as IID Documents. IID semantics, shared among different IID
 Methods, enable cross-chain interoperability with other IIDs for NFT and
 blockchain functionality.
 
 In short, IIDs **ARE** DIDs.
+
+IID Documents **are** DID Documents.
 
 This makes IIDs compatible with URLs and URIs and widespread tooling of
 the World Wide Web as well as emerging DID technology. It also ensures
@@ -596,11 +600,11 @@ rigor.
 **Second**, differentiate IIDs as on-chain identifiers with their own
 semantic namespace for references and resources.
 
-A**ll** IIDs refer to on-chain assets. Dereference an IID, you get a
-representation of that asset. Then, each IID can be combined with a path
-part or fragment part to refer to off-chain resources or on-chain
-defined references. Use path parts for dereferencable resources\--those
-that can be retrieved online. Use fragments for pure identifiers defined
+**All** IIDs refer to on-chain assets by definition. Dereference an IID,
+you get a representation of that asset. Then, each IID can be combined
+with a path part or fragment part to refer to off-chain resources or
+on-chain defined references. Use \/path parts for dereferencable resources---
+those that can be retrieved online. Use \#fragments for pure identifiers defined
 within the IID Document.
 
 In this way, every IID defines its own namespace, within which rigorous
@@ -611,7 +615,7 @@ For example, **did:title:abc** might represent a token that is the title
 to a real property, and **did:title:abc\#parcel1** is used to refer to
 that property in attestations associated with that token, such as
 "**did:title:abc\#parcel1"** is located at 123 Main Street, Anytown,
-France. Then, you can use **did:title:abc/photo1.png** to point to an
+France. Then, you can use **did:title:abc\/photo1.png** to point to an
 image of the property.
 
 By IID convention, if it is desirable to refer to a IID Resource in an
@@ -626,16 +630,16 @@ IID is always only used to refer to the asset, which is always
 dereferenceable, while IID references are only ever URIs (which are not
 themselves inherently dereferenceable) and IID Resources
 
-Both base IIDs, IID References (with fragments), and IID Resources (with
+Base IIDs, IID References (with fragments), and IID Resources (with
 path parts), are fully conformant URIs and suitable for use in RDF
 statements.
 
-IIDs resolve to IID documents which contain the minimum required
-metadata for using the NFT. Like a DID Document, it defines a range of
-features for interacting with the subject. It may also provides IID
-specific properties:
+IIDs resolve to IID documents which contain the minimum, verifiable
+required metadata for using the NFT. Like a DID Document, it defines a
+range of features for interacting with the subject. It may also provides
+IID specific properties:
 
-**AssociatedResources** -- provides a privacy-enabled way to attach
+**LinkedResource** -- provides a privacy-enabled way to attach
 digital resources associated with the asset. An optional array of one or
 more resource descriptors, it provides the metadata required for
 accessing and using that resource, e.g., type of resource, a proof to
@@ -659,7 +663,7 @@ This approach allows token owners to manage privacy in three key ways:
     and security checks before revealing information.
 
 3.  The hash graph resource descriptor type obscures not only the
-    content of the associated resource, but also the quantity.
+    content of the linked resource, but also the quantity.
 
 Resources may be secured by specifying a proofType of hash or hashgraph.
 A hashgraph uses a merkle tree of hashes for external content associated
@@ -667,16 +671,16 @@ with this asset. A resource descriptor of this type obscures both the
 type and the number of such resources, while allowing each such resource
 to be verifiably associated. It also provides for privacy-respecting
 verification of complete disclosure. Anyone who needs to prove they have
-all of the associated resources can compare their own hash graph of
+all of the linked resources can compare their own hash graph of
 resources with that stored in the IID Document. Note that this
 anti-censorship technique requires a verifier to discover the type and
 nature of those resources on their own.
 
-Proposed properties for resource descriptors in the AssociatedResources
+Proposed properties for resource descriptors in the LinkedResource
 property:
 ```json
 { 
-    "AssociatedResources" : [{
+    "LinkedResource" : [{
 
     "path": fully qualified IID Resource ID for this resource, e.g.,
 did:example:abc/myResource.png,
@@ -707,7 +711,7 @@ distribution
 }
 ```
 
-### Types of Associated Resources for IIDs
+### Types of Linked Resources for IIDs
 
 IIDs define a range of specific resource types for interoperability
 among IID Methods.
@@ -715,7 +719,7 @@ among IID Methods.
 **Extension**: A JSON-LD extension of the current document. The RDF
 statements in the extension are to be interpreted as if they were
 included in the current IID Document. For example, you might provide
-additional service endpoint definitions in an associated resource. Those
+additional service endpoint definitions in an linked resource. Those
 endpoints can be verified as associated with that IID, but only by those
 parties who secure those definitions through other, privacy respecting
 means.
@@ -724,16 +728,16 @@ means.
 capabilities that can be invoked by the IID owner or its designate,
 using cryptographic materials defined elsewhere in the document.
 
-**Administered Rights**: Similarly, associated resources could specify
-real-world rights afforded to the IID owner or its designate, such as
-the digital driver\'s license or a theater ticket. The representation
+**Accorded Rights**: Similarly, linked resources could specify
+real-world rights accorded to the IID owner or its designate, such as
+a digital driver\'s license or a theater ticket. The representation
 framework for such rights must be open ended, including both plain text
 statements of rights, e.g., \"The controller of this IID is entitled to
 ...\", or more rigorous, and computationally evaluatable RDF statements
 which might describe in great detail a range of benefits that accompany
 the basic rights of the token.
 
-**Attestations**: Verifiable credentials, verified claims, claim tokens
+**Assertions**: Verifiable credentials, verified claims, claim tokens
 as described in NFT-RFC-008. This allows arbitrary, yet verifiable
 attestations to be made either about the asset or about the resources
 defined by IID references. The attributes represented in these claims
