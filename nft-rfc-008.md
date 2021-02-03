@@ -5,7 +5,7 @@ stage: draft
 category: NFT/METADATA
 authors: Shaun Conway @ig-shaun, Eric Schuh @eric-schuh
 created: 2021-1-20
-modified: 2021-1-28
+modified: 2021-2-3
 ---
 
 # NFT RFC 008 NFT Assertions
@@ -16,7 +16,7 @@ there must be a  process for verifying the assertions which are made about these
 or virtual resources, to determine if the assertions are both true and positively 
 correlated with the resource.
 
-Use cases (described in nft-rfc-002) such as: Access Tokens (Section 2.2), 
+Relevant use cases (described in nft-rfc-002) for reference: Access Tokens (Section 2.2), 
 Impact Tokens (Section 2.3), and Quality Carbon Credits (Section 4.1).  
 
 For example an industrial company may make claims that it has verifiably reduced its carbon 
@@ -55,117 +55,111 @@ content of a verifiable claim, to determine whether the claim meets specific acc
 criteria for it to be considered a valid claim which passes a threshold probability of 
 being true and is also positively correlated with the identified claim subject.  
 
-### Claim Verification Oracle
+### Claim Verification Agent
 An agent  which has the authority to issue signed attestations in the format of a 
 Verifiable Credential about the results of a claim evaluation. The attestation may include 
 additional information. For instance, converting a claim about renewable energy usage from 
 a claimed number of Kilowatt Hours into Verified Carbon Credit units.
 
+They are provided a capability from the NFT issuing authority which enables their right to evaluate the 
+set of claims governed by the issuing authoridy. 
+
 ## Verification Process
-Throughout this overview there will be reference to four different Verifiable Credentials, which 
-will be denoted the first time they are used as VC1, VC2, VC3, VC4, and VC5. The set of these five 
-VCs will be utilized in the minting of a NFT with its associated metadata.
-1. The Claim Issuer (in this case, the Renewable energy producer) holds a Verifiable Credential (VC1) 
-   which attests to the Issuer’s right to make claims of a specific type. This may require other conditional 
-   requirements to be met by the issuer.
-2. The Claim Issuer issues a set of Verifiable Claims (for the Mw Hours of clean energy they have produced). 
-   These claims contain all the data necessary for a Verification agent to perform an evaluation of the claim, 
-   opinionate and verify whether the contents of the claim are true and positively correlated. 
-3. Verifiable Claims are encoded within a Verifiable Credential wrapper to become VC2
-   * VC2s contain not only the Verifiable Claim being asserted but also a reference to Claim Issuer’s VC1. 
-     The combination of these two: 
-	    - Enables cryptographically authenticating the subject and issuer’s identifiers
-		- Enables cryptographically verifying that the payload data has not been modified.
-   * The VC2s which contain the Verifiable Claims are registered to a blockchain and stored in an appropriate 
-     data store which can be accessed by the Claim Verification Agent when they begin the process of evaluation. 
-4. VC2s are evaluated by the Claim Verification Agent.
-   * If a claim meets the threshold requirements for being both true and positively correlated with the subject, 
-     it may be considered a Verified Claim which has been verified by the identified Claim Verification Agent.
-   * The Claim Verification Agent will include a Verifiable Credential (VC4) which can be used to verify their 
-     ability to evaluate the claims being made in step one. 
-   * This combination of the evaluated VC2s, which now represent Verified Claims, and the Claim Verification Agent’s 
-     VC4 are wrapped in a new Verifiable Credential, VC3
-5. On the basis of one or more Verified Claims and the attestations on these claims by Claim Verification Agent, 
-   as bundled in VC3, a Credential Issuing Authority issues a Verifiable Credential (VC5). This is the equivalent 
-   of issuing a certificate, in the Carbon Emission Reduction use-case. This resource is tokenized as an NFT.
-6. The Credential Issuing Authority may provide the Claim Issuer a capability (such as  in the form of a ZCAP) 
-   to take ownership of the minted NFT. 
-   * The NFT conforms to the Interchain NFT Specification
-   
-## VC# Overview
-This section gives an overview of the purpose of the five different Verifiable Credentials described in the use-case.
 
-### VC1
-The Verifiable Credential issued by a recognized certification agency that gives the Claim Issuer the right to make claims. 
-Used by the Claim Verification Agent to validate that a claim has been issued by an authorised claim-issuer.
-
-### VC2
-The Verifiable Credential which contains the digital representation of the claim being made by the Claim Producer. 
-These Verifiable Claims are registered on a blockchain and stored in a digital data store that, with the proper capability, 
-a Claim Verification Agent can access as part of their verification process.
-
-### VC3
-The Verifiable Credential which contains, at least by reference, the set of VC1, VC2 and VC4 and is issued by the 
-Claim Verification Agent to either attest or contest the validity of the claims being made in VC2.
-
-VC3s also contain assertions made by the Claim Verification Agent as to how they arrived at the conclusion of their claim‒
-e.g. how they got to their conclusion and any comments regarding the evaluation‒which provide the Claim Verification Agent’s 
-reasoning for the outcome of the evaluation.
-
-### VC4
-The Verifiable Credential which is issued to the Claim Verification Agent by a recognized governing body that oversees the types 
-of claims the Claim Verification Agent will be evaluating. This Verifiable Credential establishes the validity of the verification 
-claims made by the Claim Verification Agent. 
-
-In the case that the Claim Verification Agent is also the recognized governing body which oversees the evaluation of claims of the 
-type being made VC4 may not be necessary. 
-
-### VC5
-The final Verifiable Credential created in the process. This is tokenized in the minting of the NFT IID which is returned to the 
-Claim Producer via a retrieval capability and contains, at least by reference, the set of Verifiable Credentials utilized in the 
-process of verifying the initial claims made by the Claim Producer. It must provide the complete set of 
-Verifiable Credentials (V1, V2, V3 and V4) so the full chain of verification can be inspected by third parties interested in the 
-final NFT IID can inspect the origins of the NFT.
+1. The final issuing authority of the NFT begins by specifying a schema template for the NFT they will be issuing.
+   This schema template will define both set of criteria which a Claim Issuer has the burden of satisfying for the 
+   NFT issuing authority to accept the claim being made as true and a set of criteria that must be met for the NFT
+   issuing authority to receive a minting capability. The criteria to recieve the minting capability from the NFT issuing
+   authority and the criteria for the acceptance of a claim or set of claims can and likely will be different. 
+   If the criteria, as definited in the schema template, are not met to the satisfaction of the NFT issuing authority 
+   they can revoke the minting capability of the Claim Issuer and/or burn any minted NFT(s).
+   Some example criteria that could be specified:
+   * Claim Issuer must provide a certification from a certifying agency recognised by the NFT issuing authority
+   * Claim Issuer must have their Claim validated by a recognized evaluating agency
+   * Claim Issuer must provide evidence as referrenced by the Claim Evaluation
+   * Claim must be submitted within a certain timeframe of the claim issuing date
+   * etc
+2. Once the NFT issuing authoriy has specified their schema a Claim Issuer can now evaluate the published schema and 
+   begin the process of collecting any credentials they may need to satisfy the criteria set forth in the schema. For
+   the Claim Issuer this may include:
+   * Contacting a recognized certification agency who can inspect their infrastructure and provide an inspection certificate.
+   * Finding a certified Claim Verification Agent to evaluate their claims
+   * Ensure the can provide the evidence needed by the Claim Verification Agent
+   * etc
+3. Now that the Claim Issuer has collected the necissary pieces to fullfil the NFT issuing authority's criteria they can now
+   provide an initial set of proof of criteria fulfillment to the NFT issuing authority, void of any claim, and receive
+   a capability to mint the NFT specified by the schema from the NFT issuing authority. This capability allows the Claim
+   Issuer to mint an NFT assuming they provide verifiable proof that the schema criteria has been met. 
+4. After the Claim Issuer receives their minting capability they may now begin issuing the claims they will be making. Note
+   that this process could and likely will be asynchronos in the a Claim Issuer can start issuing claims prior to any 
+   certification process taking place, as long as this does not violate any of the NFT schema's criteria. 
+   Some claim examples:
+   * Production 1000MWh of solar energy
+   * Increased performance of a student by a letter grade over a semester
+   * Removal of 50tons of carbon via carbon capture
+5. Once the claims have been issued, the Claim Issuer now begins the process of turning their claims into an NFT. This begins
+   by first going through the necissary steps to satisfy the NFT schema criteria and may include:
+   * A reference to a certification made by a recognized agency
+   * A reference to a cerfied Claim Verification Agent's evaluation of the claim
+   * etc
+6. Only after satisfying criteria as denoted by the NFT schema criteria can the Claim Issuer now take the set
+   of data--this being the claim itself and the set of data which satisfies the schema criteria--and use this to mint an NFT.
+7. This NFT can now be governed by the particular NFT requirements (e.g. mintable, tradable, non-fungable, etc) with the NFT
+   issuing authority retaining the right to burn the NFT should any dispute be resolved against the Claim Issuer or any 
+   attestations made by the Claim Issuer against the specified NFT schema criteria.    
 
 ## Carbon Credits Example
 To walk through the above Verification Process we are going to use an example of a company, HydroElec Inc., who has recently upgraded 
 a dam to support the production of hydroelectric power and is going through the process of claiming 100 tons of Carbon Credits from 
-the UN’s International Climate Change Authority (UNFCCC).. 
+the UN’s International Climate Change Authority (UNFCCC).
+
+Throughout this overview there will be reference to four different Verifiable Credentials, which will be denoted the first time they are 
+used as VC1, VC2, VC3, VC4. The set of these five VCs will be utilized in the minting of a NFT with its associated metadata.
 
 In this example we will use the name of a few companies representing the different authorities involved in the process: 
 * __HydroElec__ Inc is the clean energy producer who issues a renewable energy certificate (REC) claim‒in the format of VC2, of having 
   produced a number of Mw Hours of clean energy through its certified hydroelectric project. 
 * __CleanEnergy Certifier__ is the certifying authority who certifies HydroElec Inc’s new hydroelectric dam project and issues VC1
-* __CarbonAudit__ is the REC Claim Verification Agent who evaluates the producer’s CER claim and performs uses an approved method to transform 
-  this claim into Certified Emission Reduction Units and issues VC3s in the form of a Verified Carbon Emission Reduction. 
+* __CarbonAudit__ is the REC Claim Verification Agent who evaluates the producer’s CER claim and uses a capability issued by the UNFCCC
+  to issue Evaluation Report Credentials (VC3s)
 * __UNFCCC__ will act as the both governing body who certified CarbonAudit as a Claim Verification Agent and issues VC4 and as the issuing 
   authority for the NFT IID that is produced from VC5
+* __Clean Energy Blockchain__ is a ficticious blockchain where HydroElec will register their issued clean energy claims by reference. The
+  claims themselves are stored in a secure data vault controlled by HydroElec which needs a capability to access. 
 
-1. CleanEnergy Certifier gets certified by the UNFCCC to act as a Claim Verification Agent for the purposes of issuing Verified REC and receives VC4 
-   from the UNFCCC. 
-2. HydroElec Inc gets certified as a producer of REC Claims, with a subcategory of hydroelectric power, by CleanEnergy Certifier who audited the 
-   installation of the new hydroelectric dam that was recently converted. HyrdoElec Inc receives VC1 from CleanEnergy Certifier once this process is 
-   complete. 
-3. Once HydroElec Inc has their REC Claim Issuing Certification from CleanEnergy Certifier, they turn on their new dam and allow the turbines to start 
-   producing energy. Each turbine has its own, individual IOT device, which outputs a claim after every kilowatt hour of produced energy, 
-   including a reference to the VC1 HydroElec Inc received above. Each of the individual claims output by each turbine’s IOT device is a VC2
-4. As the turbines IOT devices produce the individual VC2s they are registered on a blockchain, with the actual VC2 being stored in a digital 
-   data store that can be accessed given the proper capability. 
-5. After a few days of running HydroElec Inc contacts CarbonAudit ask requests that they begin the process of verifying the Verifiable Claims 
-   that have been registered to the blockchain and include in this request a capability for CarbonAudit to access the digital data store the 
-   VC2s are actually stored in. 
-6. CarbonAudit begins processing the VC2s as indexed on the blockchain. Each VC2 is independently evaluated with the contained, referenced 
-   VC1 that certifies HydroElec Inc as a valid producer of the claims being made being checked for each VC2 processed. 
-7. Once CarbonAudit has verified a set of VC2s from HydroElec Inc that would constitute 100 tons of carbon units, they package the references 
-   to the processed VC2s, along with CarbonAudit’s certifying VC4 that can be used to verify their standing with the UNFCCC, into a VC3 which 
-   is returned to HydroElec Inc. 
-8. Once HydroElec Inc receives a VC3 which asserts CarbonAudit’s verification of RECs worth the equivalent of 100 tons worth of carbon, 
-   the VC4 is passed to the UNFCCC for final evaluation.
-9. The UNFCCC reviews the submitted VC3, including verifying the referenced certifying agencies issued VC1 (from Sustained Certs) and 
-   VC4 (from UNFCCC), and once they are satisfied that all is in order, bundle VC4 with a verification assertion into VC5. 
-10. VC5 is then minted into a Carbon Credits NFT which represents 100 tons worth of Carbon Credits. A capability to retrieve this minted NFT 
-    is then given to HydroElec Inc by the UNFCCC.
-11. HydroElec Inc claims their Carbon Credit NFT, granting them full ownership.
+1. The UNFCCC publishes a new NFT schema for RECs which includes a set of criteria--as listed below--as well as specifying that producing 
+   a verifiable certificate from an approved site auditor (CleanEnergy Certifier) can be exchanged for the capability to mint REC NFTs:
+   * Claim Issuer must have their facilities certified by a certifying agency recognized by the UNFCCC
+   * Claim Issuer must have their claims validated by a Claim Verification Agent that is recognized by the UNFCCC
+      - Claim Verification Agent must include a hashed reference to each Claim they processed
+      - Claim Verification Agent must include a timestamp in ISO 8601 format for when each Claim was processed
+   * Energy Claims must be made in units of MWh
+   * Energy Claims must include the time range the energy was produced in and must follow ISO 8601
+   * Claim Issuer must include a specific IOT device reference the claim was generated from
+   * Claim Issuer must include last service date in ISO 8601 format for each IoT device
+2. CleanEnergy Certifier gets certified by the UNFCCC to act as a project auditor for the purposes of certifying a project to be able to make
+   REC claims and receives VC4 from the UNFCCC. At the same time CarbonAudit gets certified by the UNFCCC as a Claim Verification Agent for 
+   these new REC NFTs and receives a capability from UNFCCC to issue an Evaluation Report Credentials (VC3). 
+3. HydroElec get CleanEnergy Certifier to audit the new electric dam they just converted and receives a Certifying Credential (VC1) from 
+   CleanEnergy Certifier which includes, by reference, CleanEnergy Certifier's Certification Credential (VC4) they received from UNFCCC.
+4. HydroElec submits their Certifying Credential (VC1) to the UNFCCC and receives the capability of minting REC NFTs. 
+5. HydroElec begins producing renwable energy claims and stores them, by reference, on the Clean Energy Blockchain. Enlisting CarbonAudit, they
+   provide a capability to CarbonAudit to access the referenced renwable energy claims. 
+6. CarbonAudit processes the claims as they are registered to the Clean Energy Blockchain and, as they only issue Evaluation Report credentials (VC3s).
+7. Once CarbonAudit has evaluated 1,000MWh worth of claims, they bundle their evaluations in a VC3, which contains: 
+   * Reference to each claim evaluated
+   * Outcome and reasoning for each claim evaluated
+8. This Evaluation Report Credential (VC3) is issued via the capability CarbonAudit recieved from the UNFCCC. 
+9. The Evaluation Report Credential is packages along with the other data required by the REC NFT schema and HydroElect uses this package to mint
+   the REC NFT using the capability they received from the UNFCCC. 
+10. Once the minting is complete, HydroElec can now exercise all rights afforded to them as owners of a REC NFT which represents 1,000MWh of
+    renwable energy created and utilized. 
+11. After their next audit, CleanEnergy Certifier found an issue with one of the turbines at the dam project and as such issues a claim to the
+    UNFCCC that all evaluations made based on data from the IOT device attached to the turbing should be invalidated. The UNFCCC reviews the 
+    claim made by CleanEnergy Certifier, finds it has good basis can burns the set of NFTs which contained verified data from the time period
+    specified by CleanEnergy Certifier. They also temporarily revoke HydroElec's minting capability while additional review of their facilities
+    takes place. 
+   
 
 ## Diagram
 
