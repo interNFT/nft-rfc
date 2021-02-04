@@ -86,25 +86,25 @@ set of claims governed by the issuing authoridy.
    * Finding a certified Claim Verification Agent to evaluate their claims
    * Ensure the can provide the evidence needed by the Claim Verification Agent
    * etc
-3. Now that the Claim Issuer has collected the necissary pieces to fullfil the NFT issuing authority's criteria they can now
-   provide an initial set of proof of criteria fulfillment to the NFT issuing authority, void of any claim, and receive
+3. Now that the Claim Issuer has collected the necessary pieces to fulfill the NFT issuing authority's criteria they can now
+   provide an initial set of proof of criteria fulfillment to the NFT issuing authority and receive
    a capability to mint the NFT specified by the schema from the NFT issuing authority. This capability allows the Claim
    Issuer to mint an NFT assuming they provide verifiable proof that the schema criteria has been met. 
 4. After the Claim Issuer receives their minting capability they may now begin issuing the claims they will be making. Note
-   that this process could and likely will be asynchronos in the a Claim Issuer can start issuing claims prior to any 
+   that this process could and likely will be asynchronous in the a Claim Issuer can start issuing claims prior to any 
    certification process taking place, as long as this does not violate any of the NFT schema's criteria. 
    Some claim examples:
    * Production 1000MWh of solar energy
    * Increased performance of a student by a letter grade over a semester
    * Removal of 50tons of carbon via carbon capture
 5. Once the claims have been issued, the Claim Issuer now begins the process of turning their claims into an NFT. This begins
-   by first going through the necissary steps to satisfy the NFT schema criteria and may include:
+   by first going through the necessary steps to satisfy the NFT schema criteria and may include:
    * A reference to a certification made by a recognized agency
    * A reference to a cerfied Claim Verification Agent's evaluation of the claim
    * etc
 6. Only after satisfying criteria as denoted by the NFT schema criteria can the Claim Issuer now take the set
    of data--this being the claim itself and the set of data which satisfies the schema criteria--and use this to mint an NFT.
-7. This NFT can now be governed by the particular NFT requirements (e.g. mintable, tradable, non-fungable, etc) with the NFT
+7. This NFT can now be governed by the particular NFT requirements (e.g. mintable, tradable, immutable, etc) with the NFT
    issuing authority retaining the right to burn the NFT should any dispute be resolved against the Claim Issuer or any 
    attestations made by the Claim Issuer against the specified NFT schema criteria.    
 
@@ -120,7 +120,7 @@ In this example we will use the name of a few companies representing the differe
 * __HydroElec__ Inc is the clean energy producer who issues a renewable energy certificate (REC) claim‒in the format of VC2, of having 
   produced a number of Mw Hours of clean energy through its certified hydroelectric project. 
 * __CleanEnergy Certifier__ is the certifying authority who certifies HydroElec Inc’s new hydroelectric dam project and issues VC1
-* __CarbonAudit__ is the REC Claim Verification Agent who evaluates the producer’s CER claim and uses a capability issued by the UNFCCC
+* __CarbonAudit__ is the REC Claim Verification Agent who evaluates the producer’s REC claim and uses a capability issued by the UNFCCC
   to issue Evaluation Report Credentials (VC3s)
 * __UNFCCC__ will act as the both governing body who certified CarbonAudit as a Claim Verification Agent and issues VC4 and as the issuing 
   authority for the NFT IID that is produced from VC5
