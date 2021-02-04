@@ -102,7 +102,8 @@ set of claims governed by the issuing authoridy.
    * A reference to a certification made by a recognized agency
    * A reference to a cerfied Claim Verification Agent's evaluation of the claim
    * etc
-6. Only after satisfying criteria as denoted by the NFT schema criteria can the Claim Issuer now take the set
+6. Only after satisfying criteria as denoted by the NFT schema criteria, and any caveats attached 
+to the capability, can the Claim Issuer now take the set
    of data--this being the claim itself and the set of data which satisfies the schema criteria--and use this to mint an NFT.
 7. This NFT can now be governed by the particular NFT requirements (e.g. mintable, tradable, immutable, etc) with the NFT
    issuing authority retaining the right to burn the NFT should any dispute be resolved against the Claim Issuer or any 
