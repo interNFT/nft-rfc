@@ -148,6 +148,7 @@ In this example we will use the name of a few companies representing the differe
    provide a capability to CarbonAudit to access the referenced renwable energy claims. 
 6. CarbonAudit processes the claims as they are registered to the Clean Energy Blockchain and, as they only issue Evaluation Report credentials (VC3s).
 7. Once CarbonAudit has evaluated 1,000MWh worth of claims, they bundle their evaluations in a VC3, which contains: 
+   * Reference to VC1 describing the project
    * Reference to each claim evaluated
    * Outcome and reasoning for each claim evaluated
 8. This Evaluation Report Credential (VC3) is issued via the capability CarbonAudit recieved from the UNFCCC. 
