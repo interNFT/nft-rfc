@@ -61,75 +61,113 @@ Verifiable Credential about the results of a claim evaluation. The attestation m
 additional information. For instance, converting a claim about renewable energy usage from 
 a claimed number of Kilowatt Hours into Verified Carbon Credit units.
 
-They are provided a capability from the NFT issuing authority which enables their right to evaluate the 
-set of claims governed by the issuing authoridy. 
+They are provided a capability from the NFT Issuing Authority which enables their right to evaluate the 
+set of claims governed by the issuing authority. 
+
+### Cerification Agent
+An agent which has the auhtority to issue signed attestations in the form of  a 
+Verifiable Credential in regards to a Claim Issuer's ability to produce valid claims.
+
+They are provided capabilities from the NFT Issuing Authority which enables their right to 
+evaluate whether or not a particular Claim Issuer is capable of producing valid claims. 
+
+### NFT Issuing Authority
+The authority which specifies the schema and criteria for generating an NFT from the claims produced by 
+the Claim Issuer. They can provide other entities with capabilities to certify and verify the the Claim
+Issuer's claims are acceptable given the criteria specified. 
+
+### Certifier VC (VC1)
+Signed by the Issuing Authority, designates the Certification Agent as a verified certifier for the 
+minting of the NFT specified by the Issuing Authority.
+
+### Verifier VC (VC2)
+Signed by the Issuing Authority, designates the Claim Verification Agent as a certified verification agent
+for the purpose of evaluating evidence of claims to satisfy the caveats specified by the Issuing Authority
+as a requirement for minting the NFT. 
+
+### Project Description VC (VC3)
+Signed by the Claim Issuer, this provides a description of the project which will be issuing claims that will
+be minted into NFTs. 
+
+### Project Certification VC (VC4)
+Signed by CAP2 (below), provided to the Claim Issuer by the Certifaction Agent and asserts to the project's
+ability to issue claims that can be used to mint NFTs of the type specified by the Issuing Authority. 
+
+### Evidence VC (VC5)
+Reference VC4 and contain the assertions made by the Claim Issuer which provide the evidence needed by the
+Claim Verification Agent to verify the claim being made. VC5s are the digital representation of the claim
+being made by the Claim Issuer. 
+
+### Claim Evaluation VC (VC6)
+Signed by CAP3 (below), these contain a referense to the VC5(s) evaluated by the Claim Verification Agent and
+specify the outcome of the verification process. 
+
+### Certifier's Mint NFT Capability (CAP1)
+Provided to the Certification Agent by the Issuing Authority, this capability grants the invoker the ability to
+mint the NFT specified by the Issuing Authority provided all caveats are met. This capability is granted to the
+Claim Issuer by the Certification Agent along with VC4 after they have completed the certification process. 
+
+A standard set of caveats on CAP1:
+* Need Project Certification VC (VC4)
+* Need Claim Evaluation VC(s) (VC6)
+* Need associated Evidence VC(s) (VC5) to the provided VC6(s)
+* Need Certifier VC (VC1)
+* Need Verifier VC (VC2)
+
+### Certification Capability (CAP2)
+Provided to the Certification Agent by the Issuing Authority, this capability grants the Certification Agent the
+ability to sign Project Certification VCs (VC4) on behalf of the Issuing Authority.
+
+### Verification Capability (CAP3)
+Provided to the Claim Verification Agent by the Issuing Authority, this capability grands the Claim Verification
+Agent the ability to issue Claim Evaluation VCs (VC6) on behalf of the Issuing Authority. 
+
+### Claim Isssuer's Mint NFT Capability (CAP4)
+Provided by the Certification Agent upon project certification, this capability follows the same set of rules
+and caveats as CAP1 with the addition of project specific caveats specified upon certification. Some category
+examples for these new caveats:
+* Claim must have been issued inside a certain timeframe 
+* Data in claim must conform to a set of specific units 
+* Must include a project description (VC3)
 
 ## Verification Process
 
-1. The final issuing authority of the NFT begins by specifying a schema template for the NFT they will be issuing.
-   This schema template will define both set of criteria which a Claim Issuer has the burden of satisfying for the 
-   NFT issuing authority to accept the claim being made as true and a set of criteria that must be met for the NFT
-   issuing authority to receive a minting capability. The criteria to recieve the minting capability from the NFT issuing
-   authority and the criteria for the acceptance of a claim or set of claims can and likely will be different. 
-   If the criteria, as definited in the schema template, are not met to the satisfaction of the NFT issuing authority 
-   they can revoke the minting capability of the Claim Issuer and/or burn any minted NFT(s).
-   Some example criteria that could be specified:
-   * Claim Issuer must provide a certification from a certifying agency recognised by the NFT issuing authority
-   * Claim Issuer must have their Claim validated by a recognized evaluating agency
-   * Claim Issuer must provide evidence as referrenced by the Claim Evaluation
-   * Claim must be submitted within a certain timeframe of the claim issuing date
-   * etc
-2. Once the NFT issuing authoriy has specified their schema a Claim Issuer can now evaluate the published schema and 
-   begin the process of collecting any credentials they may need to satisfy the criteria set forth in the schema. For
-   the Claim Issuer this may include:
-   * Contacting a recognized certification agency who can inspect their infrastructure and provide an inspection certificate.
-   * Finding a certified Claim Verification Agent to evaluate their claims
-   * Ensure the can provide the evidence needed by the Claim Verification Agent
-   * etc
-3. Now that the Claim Issuer has collected the necessary pieces to fulfill the NFT issuing authority's criteria they can now
-   provide an initial set of proof of criteria fulfillment to the NFT issuing authority and receive
-   a capability to mint the NFT specified by the schema from the NFT issuing authority. This capability allows the Claim
-   Issuer to mint an NFT assuming they provide verifiable proof that the schema criteria has been met. 
-4. After the Claim Issuer receives their minting capability they may now begin issuing the claims they will be making. Note
-   that this process could and likely will be asynchronous in the a Claim Issuer can start issuing claims prior to any 
-   certification process taking place, as long as this does not violate any of the NFT schema's criteria. 
-   Some claim examples:
-   * Production 1000MWh of solar energy
-   * Increased performance of a student by a letter grade over a semester
-   * Removal of 50tons of carbon via carbon capture
-5. Once the claims have been issued, the Claim Issuer now begins the process of turning their claims into an NFT. This begins
-   by first going through the necessary steps to satisfy the NFT schema criteria and may include:
-   * A reference to a certification made by a recognized agency
-   * A reference to a cerfied Claim Verification Agent's evaluation of the claim
-   * etc
-6. Only after satisfying criteria as denoted by the NFT schema criteria, and any caveats attached 
-to the capability, can the Claim Issuer now take the set
-   of data--this being the claim itself and the set of data which satisfies the schema criteria--and use this to mint an NFT.
-7. This NFT can now be governed by the particular NFT requirements (e.g. mintable, tradable, immutable, etc) with the NFT
-   issuing authority retaining the right to burn the NFT should any dispute be resolved against the Claim Issuer or any 
-   attestations made by the Claim Issuer against the specified NFT schema criteria.    
+1. The Issuing Authority defines the schema template for the NFT they will be issuing, including specifying the caveats,
+   and creates the set of capabilities they will need to deligate to the Certification Agents (CAP1, CAP2) and the 
+   Claim Verification Agents (CAP3)
+2. The Issuing Authority certifies Certification Agents and Claim Verification Agents. Providing these entities with the 
+   proper capabilities and Verifiable Credentials to both execute and validate their roles. 
+   * Certification Agent: Receives VC1, CAP1, CAP2
+   * Claim Verification Agent: Receives VC2, CAP3
+3. The Claim Issuer starts a new project and creates the project's VC3
+4. The Claim Issuer gets the project certified by a Ceritification Agent and receives:
+   * Project Certification VC (VC4)
+   * NFT Minting Capability with specific caveats (CAP4)
+5. The Claim Issuer begins issuing claims which site the Project Certification VC (VC4)
+6. These claims are presented to the Claim Verification Agent who evaluates the claims being made and issues 
+   Claim Evaluation VCs (VC6) via the Vertification Capability (CAP3) they received from the Issuing Authority. 
+7. Bundling all the necissary data as specified by the caveats attached to their Mint NFT Capability (CAP4), the Claim Issuer
+   invokes CAP4, as provided to them by the Certification Agent, and recieves their NFT assuming all caveats are met per
+   the Issuing Authoritie's specification. 
 
 ## Carbon Credits Example
 To walk through the above Verification Process we are going to use an example of a company, HydroElec Inc., who has recently upgraded 
 a dam to support the production of hydroelectric power and is going through the process of claiming 100 tons of Carbon Credits from 
 the UN’s International Climate Change Authority (UNFCCC).
 
-Throughout this overview there will be reference to four different Verifiable Credentials, which will be denoted the first time they are 
-used as VC1, VC2, VC3, VC4. The set of these five VCs will be utilized in the minting of a NFT with its associated metadata.
-
-In this example we will use the name of a few companies representing the different authorities involved in the process: 
-* __HydroElec__ Inc is the clean energy producer who issues a renewable energy certificate (REC) claim‒in the format of VC2, of having 
+### Actors
+* __HydroElec (Claim Issuer)__  is the clean energy producer who issues a renewable energy certificate (REC) claim‒in the format of VC2, of having 
   produced a number of Mw Hours of clean energy through its certified hydroelectric project. 
-* __CleanEnergy Certifier__ is the certifying authority who certifies HydroElec Inc’s new hydroelectric dam project and issues VC1
-* __CarbonAudit__ is the REC Claim Verification Agent who evaluates the producer’s REC claim and uses a capability issued by the UNFCCC
+* __CleanEnergy Certifier (Certification Agent)__ is the certifying authority who certifies HydroElec Inc’s new hydroelectric dam project and issues VC1
+* __CarbonAudit (Claim Verification Agent)__ is the REC Claim Verification Agent who evaluates the producer’s REC claim and uses a capability issued by the UNFCCC
   to issue Evaluation Report Credentials (VC3s)
-* __UNFCCC__ will act as the both governing body who certified CarbonAudit as a Claim Verification Agent and issues VC4 and as the issuing 
+* __UNFCCC (Issuing Authority)__ will act as the both governing body who certified CarbonAudit as a Claim Verification Agent and issues VC4 and as the issuing 
   authority for the NFT IID that is produced from VC5
 * __Clean Energy Blockchain__ is a ficticious blockchain where HydroElec will register their issued clean energy claims by reference. The
   claims themselves are stored in a secure data vault controlled by HydroElec which needs a capability to access. 
 
-1. The UNFCCC publishes a new NFT schema for RECs which includes a set of criteria--as listed below--as well as specifying that producing 
-   a verifiable certificate from an approved site auditor (CleanEnergy Certifier) can be exchanged for the capability to mint REC NFTs:
+1. The UNFCCC publishes a new NFT schema for RECs which includes a set of criteria--as listed below--as well as the set of capabilities they will need to
+   be delegating to the Certification and Claim Verification Agents (CAP1,2,3):
    * Claim Issuer must have their facilities certified by a certifying agency recognized by the UNFCCC
    * Claim Issuer must have their claims validated by a Claim Verification Agent that is recognized by the UNFCCC
       - Claim Verification Agent must include a hashed reference to each Claim they processed
@@ -139,29 +177,33 @@ In this example we will use the name of a few companies representing the differe
    * Claim Issuer must include a specific IOT device reference the claim was generated from
    * Claim Issuer must include last service date in ISO 8601 format for each IoT device
 2. CleanEnergy Certifier gets certified by the UNFCCC to act as a project auditor for the purposes of certifying a project to be able to make
-   REC claims and receives VC4 from the UNFCCC. At the same time CarbonAudit gets certified by the UNFCCC as a Claim Verification Agent for 
-   these new REC NFTs and receives a capability from UNFCCC to issue an Evaluation Report Credentials (VC3). 
-3. HydroElec get CleanEnergy Certifier to audit the new electric dam they just converted and receives a Certifying Credential (VC1) from 
-   CleanEnergy Certifier which includes, by reference, CleanEnergy Certifier's Certification Credential (VC4) they received from UNFCCC.
-4. HydroElec submits their Certifying Credential (VC1) to the UNFCCC and receives the capability of minting REC NFTs. 
+   REC claims and receives the set of VC1, CAP1 and CAP2 from the UNFCCC. At the same time CarbonAudit gets certified by the UNFCCC as a 
+   Claim Verification Agent for these new REC NFTs and receives both their certification (VC2) and CAP3 from UNFCCC to issue Claim Evaluations (VC6). 
+3. HydroElec sets up their new project where they have converted an old dam to produce hydroelectric power and create their 
+   Project Description Credential (VC3)
+4. HydroElec get CleanEnergy Certifier to audit the new electric dam they just converted and receives a Certifying Credential (VC4) from 
+   CleanEnergy Certifier which is issued to HydroElec via CAP2 along with CAP4, which provides HydroElec with the capability of minting the REC NFTs.
 5. HydroElec begins producing renwable energy claims and stores them, by reference, on the Clean Energy Blockchain. Enlisting CarbonAudit, they
-   provide a capability to CarbonAudit to access the referenced renwable energy claims. 
-6. CarbonAudit processes the claims as they are registered to the Clean Energy Blockchain and, as they only issue Evaluation Report credentials (VC3s).
-7. Once CarbonAudit has evaluated 1,000MWh worth of claims, they bundle their evaluations in a VC3, which contains: 
-   * Reference to VC1 describing the project
-   * Reference to each claim evaluated
-   * Outcome and reasoning for each claim evaluated
-8. This Evaluation Report Credential (VC3) is issued via the capability CarbonAudit recieved from the UNFCCC. 
-9. The Evaluation Report Credential is packages along with the other data required by the REC NFT schema and HydroElect uses this package to mint
-   the REC NFT using the capability they received from the UNFCCC. 
-10. Once the minting is complete, HydroElec can now exercise all rights afforded to them as owners of a REC NFT which represents 1,000MWh of
-    renwable energy created and utilized. 
-11. After their next audit, CleanEnergy Certifier found an issue with one of the turbines at the dam project and as such issues a claim to the
-    UNFCCC that all evaluations made based on data from the IOT device attached to the turbing should be invalidated. The UNFCCC reviews the 
-    claim made by CleanEnergy Certifier, finds it has good basis can burns the set of NFTs which contained verified data from the time period
-    specified by CleanEnergy Certifier. They also temporarily revoke HydroElec's minting capability while additional review of their facilities
-    takes place. 
-   
+   provide a capability to CarbonAudit to access the referenced renwable energy claims. As part of HydroElect's agreement with CarbonAudit, they have
+   specified that CarbonAudit will provide their verification certificates once 100,000KWh of energy worth of claims have been verified and CarbonAudit
+   must notify HydroElec immediately of any rejected claims. 
+6. CarbonAudit processes the claims as they are registered to the Clean Energy Blockchain and uses CAP3 to issue sets of Claim Evaluation 
+   credentials (VC6s) which contain the result of the evaluation as well as a reference to their certification (VC2). Once CarbonAudit has processed
+   100,000KWh worth of claims from HydroElec, the VC6s are returned to HydroElec.
+8. HydroElect takes the set of:
+   * Certifier VC (VC1)
+   * Verifier VC (VC2)
+   * Project Descritpion (VC3)
+   * Project Certification VC (VC4)
+   * Evidence VCs (VC5s) 
+   * Claim Evaluation VCs (VC6s)
+   And invokes the capability given to them upon completion of their certification process (CAP4). Assuming all caveats pass their checks, HydroElec 
+   recieves thier REC NFT which represents the credit for 100,000 KWh of clean energy produced. 
+9. A few months after a particular NFT was produced, CleanEnergy Certifier is doing their routine checkup of the facility and finds that one of the turbines
+   is not properly reporting the energy throughput. They revoke CAP4 from HydroElec until the issue is solved and file a dispute with the UNFCCC regarding 
+   validity of a number of the NFTs that had been minted over these last few months. Finding the offending claims, the UNFCCC modifies the NFTs that were 
+   affected by the faulty sensor to omit the claims made by the faulty device. One such REC NFT had more then 50% of its claims for the offending device and
+   as such this NFT is burned by the UNFCCC. 
 
 ## Diagram
 
