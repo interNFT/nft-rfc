@@ -157,7 +157,7 @@ by the Issuing Authority for the project to be certified.
 ### 4. Project Certification
 The Claim Issuer gets the project certified by a Ceritification Agent and receives:
    * Project Certification VC (VC4)
-   * NFT Minting Capability with specific caveats (CAP4)
+   * NFT Minting Capability with specified caveats (CAP4)
 This process of creating a project and getting it certified as a valid minter of the NFTs defined in the initial class
 definition is subject to the caveats specified by the Issuing Authority. It is completely valid to have an NFT Class 
 Template defined without the need for the NFT minter to be certified. 
