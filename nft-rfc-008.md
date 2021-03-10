@@ -241,7 +241,7 @@ credentials (VC6s) which contain the result of the evaluation as well as a refer
 HydroElect takes the set of:
    * Certifier VC (VC1)
    * Verifier VC (VC2)
-   * Project Descritpion (VC3)
+   * Project Description (VC3)
    * Project Certification VC (VC4)
    * Evidence VCs (VC5s) 
    * Claim Evaluation VCs (VC6s)
