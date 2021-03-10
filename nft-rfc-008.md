@@ -137,7 +137,7 @@ The Issuing Authority defines the class template for the NFT they will be issuin
 and creates the set of capabilities they will need to deligate to the Certification Agents (CAP1, CAP2) and the 
 Claim Verification Agents (CAP3). The caveats specified must be evaluatable by the defined class template and as such
 must be representable in digital form. For the evaluation of real world caveats--e.g. requiring ID checked at the door
-to a play serving alcohol--the Issuing Authority can, either by proxy of themselves, certify real world evaluators of
+to a play serving alcohol--the Issuing Authority can, either by proxy or themselves, certify real world evaluators of
 the caveat whom they trust and whose resulting verification output--in the form of Verifiable Credentials--is the 
 caveat required by the NFT Class Template.
 
