@@ -166,7 +166,7 @@ Template defined without the need for the NFT minter to be certified.
 The Claim Issuer begins issuing claims which cite the Project Certification VC (VC4). These claims contain all the
 information needed by the Claim Verification Agent to properly verify that the claims meet the caveats as defined in the
 NFT Class Template. The need for a Claim Verification Agent only arrises in the case that the NFT Issuing Authority 
-specifies as such in caveat definitions and, once again, the caveat itself would be the inclusion of a Verifiable Credential
+specifies this in the caveats. Once again, the caveat would require a Verifiable Credential to be
 which is produced by the Claim Verification Agent and which attests to the outcome of the claim evaluation. 
 
 ### 6. Evaluate Claims
