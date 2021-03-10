@@ -199,7 +199,7 @@ the UN’s International Climate Change Authority (UNFCCC).
 * __UNFCCC (Issuing Authority)__ will act as the both governing body who certified CarbonAudit as a Claim Verification Agent and issues VC4 and as the issuing 
   authority for the NFT IID that is produced from VC5
 * __Clean Energy Blockchain__ is a ficticious blockchain where HydroElec will register their issued clean energy claims by reference. The
-  claims themselves are stored in a secure data vault controlled by HydroElec which needs a capability to access. 
+  claims themselves are stored in a secure data vault controlled by HydroElec which requires an authorised capability to access. 
 
 ### 1. NFT Class Template Defined
 The UNFCCC publishes a new NFT schema for RECs which includes a set of criteria--as listed below--as well as the set of capabilities they will need to
