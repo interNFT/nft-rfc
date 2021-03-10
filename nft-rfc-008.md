@@ -183,7 +183,7 @@ Otherwise the mint transaction will fail and the Claim Issuer will receive a mes
 ### 8. Dispute Claim
 Once the NFT has been minted either the Certification Agent, Claim Verification Agent or the Issuing Authority may dispute the data
 used to satisfy the specified caveats. The result of this dispute could result in the Issuing Authority burning the NFT as evidence
-the caveats were not met is given. 
+that the caveats did not meet the requirements. 
 
 ## Carbon Credits Example
 To walk through the above Verification Process we are going to use an example of a company, HydroElec Inc., who has recently upgraded 
