@@ -163,7 +163,7 @@ definition is subject to the caveats specified by the Issuing Authority. It is c
 Template defined without the need for the NFT minter to be certified. 
 
 ### 5. Issue Claims
-The Claim Issuer begins issuing claims which site the Project Certification VC (VC4). These claims contain all of the
+The Claim Issuer begins issuing claims which cite the Project Certification VC (VC4). These claims contain all the
 information needed by the Claim Verification Agent to properly verify that the claims meet the caveats as defined in the
 NFT Class Template. The need for a Claim Verification Agent only arrises in the case that the NFT Issuing Authority 
 specifies as such in caveat definitions and, once again, the caveat itself would be the inclusion of a Verifiable Credential
