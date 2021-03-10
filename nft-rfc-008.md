@@ -178,7 +178,7 @@ being made.
 ### 7. Mint NFT
 Once they have all the necissary data, as specified by the caveats, the Claim Issuer invokes their capability to mint the NFT (CAP4), 
 as provided to them by the Certification Agent, and recieves their NFT assuming all caveats are met per the Issuing Authoritie's 
-specification. Otherwise the mint transaction will fail and the Claim Issuer will receive a message detailing the failure mode. 
+Otherwise the mint transaction will fail and the Claim Issuer will receive a message detailing the failure mode. 
 
 ### 8. Dispute Claim
 Once the NFT has been minted either the Certification Agent, Claim Verification Agent or the Issuing Authority may dispute the data
