@@ -185,7 +185,7 @@ Once the NFT has been minted either the Certification Agent, Claim Verification 
 used to satisfy the specified caveats. The result of this dispute could result in the Issuing Authority burning the NFT as evidence
 that the caveats did not meet the requirements. 
 
-## Carbon Credits Example
+## Example User Story: Renewable Energy Certificates (RECs)
 To walk through the above Verification Process we are going to use an example of a company, HydroElec Inc., who has recently upgraded 
 a dam to support the production of hydroelectric power and is going through the process of claiming 100 tons of Carbon Credits from 
 the UN’s International Climate Change Authority (UNFCCC).
