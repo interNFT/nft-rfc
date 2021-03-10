@@ -151,7 +151,7 @@ explicitly off-chain information and/or evaluation of off-chain information and 
 a high degree of flexibility in their own policy for acceptable caveat resolution. 
 
 ### 3. Create Project
-The Claim Issuer starts a new project and creates the project's VC3 which provides all of the necissary details required
+The Claim Issuer starts a new project and creates the project's VC3 which provides all of the necessary details required
 by the Issuing Authority for the project to be certified.
 
 ### 4. Project Certification
