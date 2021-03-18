@@ -678,29 +678,27 @@ nature of those resources on their own.
 
 Proposed properties for resource descriptors in the LinkedResource
 property:
-```json
+```javascript
 { 
     "LinkedResource" : [{
 
-    "path": fully qualified IID Resource ID for this resource, e.g.,
-did:example:abc/myResource.png,
+    "path" (optional): // fully qualified IID Resource ID for this resource, e.g., did:example:abc/myResource.png,
+
+    "id" (optional): // fully qualified IID Reference ID for this resource, e.g., did:example:abc#myResource.png, Optional
 
     "type" : "nft:ResourceDescriptor",
 
-    "proofType" (optional) : "hash" | "hashgraph",
+    "proofType" (optional) : "hash" | "hashgraph", 
 
     "proof" (optional): hash | hashgraph,
 
     "resourceFormat": "IID Resource type | mime type",
 
-    "encoding" : "native" | "multibase" \| "string",
+    "encoding" : "native" | "multibase" | "string",
 
-    "compression": gzip \| none,
+    "compression": gzip | none,
 
-    "encryption" : \[open ended for arbitrary extensibility\],
-
-    "identifier" (optional) : a unique reference for the resource in the
-asset's namespace,
+    "encryption" : [open ended for arbitrary extensibility],
 
     "endpoint" (optional): url,
 
