@@ -926,19 +926,3 @@ Accessed February 15, 2021.
 
 <a id="ref7">[7]</a>  Token Taxonomy Framework https://github.com/InterWorkAlliance/TokenTaxonomyFramework/blob/main/token-taxonomy.md 
 
-
-NOTES
-=====
-
-(not for RFC publication)
-
-Future Work
-
-Addressing how to deal with cross-chain transfers of IIDs. New chain
-means a new identifier, but the link to the original NFT is preserved,
-on both chains.
-
-
-Open question: we need good examples for Accorded Rights and Executable Rights.
-I think "accorded right" is a rel value of an linked resource rather than a type
-of linked resource.
