@@ -924,12 +924,6 @@ EXAMPLE 4: A privacy-preserving IID document with zCap support
 }
 ```
 
-
-
-How to create an IID Method
-===========================
-Section TBD.
-
 Terminology
 ===========
 
