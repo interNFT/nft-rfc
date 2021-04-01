@@ -1,4 +1,4 @@
----
+﻿﻿---
 nft-rfc: 6
 title: NFT Identifiers
 stage: draft
@@ -44,14 +44,12 @@ Resource Locators and Uniform Resource Identifiers [[2]](#ref2), which are the
 foundation of the World Wide Web. URLs and URIs allow for different
 schemes that specify particular mechanisms for interpreting and applying
 the rest of the identifier. For example,
-```http://example.com``` specifies a
-web-based resource that can be retrieved using the hypertext transfer
-protocol (http) and
-```mailto:joe@example.com```
-specifies a resource that can receive email messages using the SMTP
-protocol.
+```http://example.com``` specifies a web-based resource that can be 
+retrieved using the hypertext transfer protocol (http) and ```
+mailto:joe@example.com``` specifies a resource that can receive email
+messages using the SMTP protocol.
 
-IIDs are Decentralized Identifiers (DIDs), which build on URIs and URLs
+IIDs are Decentralized Identifiers (DIDs), which build on URIs and URLs 
 to provide a class of identifiers one can verify without reliance on a
 trusted third party. DIDs specifically support cryptographic
 verification methods like public/private key cryptography on any number
@@ -63,6 +61,7 @@ the use is appropriate. DID-URLs extend the base DID syntax to support
 ```/path```, ```?query```, and ```#fragment``` parts. IIDs use the 
 ```/path``` and ```#fragment``` parts of URLs to refer to IID References 
 and IID Resources.
+
 We describe how IIDs and DIDs relate in section [IIDs as DIDs](#IIDs-as-DIDs).
 
 IIDs also provide a consistent, verifiable approach for referring to
@@ -142,67 +141,86 @@ The following describes the lifecycle of any on-chain token, and specifically no
 1. [Use](#Use)
 1. [Sell](#Sell)
 1. [Buy](#Buy)
-1. [Transfer](#Transfer)
+1. [Send](#Derive)
+1. [Derive](#Derive)
+1. [Lock](#Derive)
+1. [Burn](#Derive)
 
-# Define
+### **Define**
 
-NFT start by some party--any party--defining the nature of the 
-NFT. For example, using the approach of the Token Taxonomy Framework [[7]](#ref7), 
-decide the base type, the behaviors, and any properties of the NFT. This 
-definition must be captured in a format that the underlying chain can interpret.
+NFTs start by some party--any party--defining the nature of the 
+NFT. Using some templating approach, such as the Token Taxonomy 
+Framework [[7]](#ref7), the creator first decides decide the 
+base type, properties, and services of the NFT. This definition m
+ust be captured in a format that the underlying chain can interpret.
+Our approach will favor inheritable, or at least, composible templates. Templates define both class-level and instance-level services and properties. Class-level functionality operates on the class of tokens, as a whole, while instance level services operate on a single specific token. Templates also define which properties and services are mutable or immutable and any default properties.
 
-# Mint
-The creator, or a delegated party, may 
-# Use
-# Sell
-# Buy
-# Transfer
+### **Mint**
+The creator, or a delegated party, may mint a token with the appropriate
+characteristics. This constructs an onchain record that identifies the
+token type (by reference to the token template) and populates its initial 
+properties. This is a class function. 
 
-1.  Define Class (delegation set up)
+### **Use**
+View the NFT in a wallet. Exercise accorded rights and invoke executable rights. 
+Executing those rights involve a cryptogaphic proof of authority, either by 
+proving ownership (using the chain's control architecture) or by demonstrating 
+delegated authority, using an authorization frameowrk like ACLs or Object 
+Capabilities. See the token module for further thoughts on delegations.
 
-2.  Delegate (optional) Capability to Mint
+Use also includes invoking on-chain services that are unique to the NFT, such as
+send, burn, and derive. For example, CryptoKitties allow breeding and auctions as core functionality. 
 
-3.  Mint Invoke w/ caveats
+### **Sell**
+Offer the NFT for sale, including providing a mechanism for potential buyers to
+gather any linked resources. This functionality may be provided via custom
+service endpoints, as CryptoKitties does with auctions, or it can use *any*
+digital asset marketplace that understands IIDs. For privatized NFT properties (which contain references to off-chain linked resources by hash or hashgraph),
+it will be necessary to either
 
-4.  Use
+  1. embed those resources publicly, directly in the IID Document,
+  2. provide a hash or hashset of the resources in the IID Document with a service endpoint for retrieval
+  3. provide a hash or hashset of the resources but leave the retrieval of the resources to external processes 
 
-    a.  Inspect it
+### **Buy**
+Evaluate the NFT, gather any linked resources and verify them by hash. This may 
+require working with the seller to retrieve those resources (not all relevant
+resources are appropriate for public disclosure).
 
-    b.  Invoke Services
+The purchase may be facilitated by any on-chain transfer mechanisms or marketplaces, including class- and token-specific functions.
 
-        i.  Request resources
+### **Send**
+If you own an NFT, it should be trivial matter to unilaterally change the ownership of that token
+to another party. This may be in consideration for off-chain remuneration, but the essential
+on-chain functionality has no visibility into that.
 
-        ii. Communicate with owner
+### **Derive**
+Given an NFT, one may choose to atomically "transfer" to create derivative tokens.
+This means locking (or burning) the initiative NFT and, in the same step, mint
+new tokens of an arbitrary class and relationship to the originating NFT. The 
+new tokens may be fungible or non-fungible; they may share an equal ownership right 
+in an undivisible whole, or may represent a specific interest, such as a particular 
+table at a restaurant. Similarly, the accorded rights for the derivative
+could be entirely different. In one case, a shared ownership right, in another a 
+claim against proceeds without voting rights. This transfer functionality
+allows arbitrary derivations.
 
-    c.  Exercise Accorded Rights (with or without additional
-        > requirements)
+### **Burn**
+Burning an NFT permanently removes it from existence. Although it is, inevitably, stored 
+on-chain, the token may be recorded as destroyed and irrevocably gone. Burning a token is 
+a degenerate case of transferring without a destination.
 
-        iii. Bond
 
-        iv. Unbond
+### **Lock**
+Locking a token may be useful for various cross-chain functionality, where securing the token
+to prevent sale on its existing chain, potentially requiring specific cryptographic proofs to 
+unlock the token. Locking is a subatomic part of deriving a new token from an old one.
 
-        v.  Vote
-
-        vi. See a show
-
-        vii. Decrypt Media
-
-    d.  Delegate Accorded Rights
-
-    e.  Create derivatives
-
-    f.  Collateralize it
-
-    g.  Use on another chain
-
-5.  Offer for sale
-
-6.  Verify Linked Resources
-
-7.  Buy
-
-8.  Burn
-
+At any point in this lifecycle, authorizations can be delegated with or without
+sophisticated caveats. For example, one might authorize an agent to sell an NFT
+for a minimum price, which expires in two weeks. For these kinds of operations, we 
+favor authorization capabilities (or zCaps for short) as zCaps implementations already support
+DIDs and therefore should be able to support IIDs without trouble.
 
 Requirements for the IID specification
 ======================================
@@ -434,7 +452,7 @@ This approach allows token owners to manage privacy in three key ways:
 2.  Provides for a service endpoint that can apply appropriate privacy
     and security checks before revealing information.
 
-3.  The hash graph resource descriptor type obscures not only the
+3.  The hashgraph resource descriptor type obscures not only the
     content of the linked resource, but also the quantity.
 
 Resources may be secured by specifying a proofType of hash or hashgraph.
@@ -454,30 +472,32 @@ property:
 { 
     "linkedResource" : [{
 
-    "path" (optional): // fully qualified IID Resource ID for this resource, e.g., did:example:abc/myResource.png,
+    "path" (optional): // IID Resource path for this resource in the asset namespace, e.g., /myResource.png
 
-    "id" (optional): // fully qualified IID Reference ID for this resource, e.g., did:example:abc#myResource.png, Optional
+    "id" (optional): // IID Reference ID for this resource, e.g., #myResource.png
 
     "rel" (optional): // the relationship of this resource to the IID Asset
 
     "type" : "nft:ResourceDescriptor", // The JSON-LD type of this resource
 
-    "proofType" (optional) : "hash" | "hashgraph", 
+    "proof" : [              // an array of proofs, any of which may be used
+      {
+        "type" (optional) : "hash" | "hashgraph" | "hashset" // the form of proof used to verify the resource as authentic
+        "stage" (optional) : "raw" | "compressed" | "encrypted" | "encoded" // the 
+        "value" (optional): hash | hashgraph | hashset, // the actual proof for this particular resource
+      }], 
+    "resourceFormat": media type, // the IANA media-type of the linked resource
 
-    "proof" (optional): hash | hashgraph,
+    "compression" (optional): "gzip" | "none", // the compression (performed on the raw resource) of an inline resource
 
-    "resourceFormat": "media type",
+    "encryption" : [open ended for arbitrary extensibility], // the encryption technique applied after compression and before encoding
 
-    "encoding" : "native" | "multibase" | "string",
+    "encoding" (optional) : "native" | "multibase" | "string", // the encoding (after compression and encryption) of an inline resource; "native" means the inline resource is native JSON-LD with neither compression nor encryption
 
-    "compression": "gzip" | "none",
+    "endpoint" (optional): url, // a URL at which this resource can be retrieved before decrypting and decrompressing
 
-    "encryption" : [open ended for arbitrary extensibility],
-
-    "endpoint" (optional): url,
-
-    "resource" (optional): a representation of the resource for inline
-distribution
+    "resource" (optional): "..." a representation of the resource for inline
+distribution, encoded as per "encoding", then compre
 
 }]
 }
@@ -801,12 +821,11 @@ EXAMPLE 3: A minimal, privacy-preserving IID document
 There are four privacy-preserving elements in this privacy-preserving
 minimal IID document.
 
-**NOTE: From a privacy perspective, it might be better to make these 
-properties mandatory for IIDs
-to maximize herd privacy. However, the current language of "SHOULD"
-for these requirements allows IID creators to violate herd privacy
-when they deem it appropriate for their use case. It is discouraged,
-but allowed. This deserves further discussion.**
+**NOTE: From a privacy perspective, it might be nice to make the following
+elements mandatory for IIDs to maximize herd privacy. However,
+the current language of "SHOULD" for these requirements allows IID creators
+to trade off herd privacy when deemed appropriate for their use case.
+It is discouraged, but allowed. This deserves further discussion.**
 
 **First**, there is one and only one service endpoint, which points to a
 shared, polymorphic mediator, as described in Section 10.6 Service
@@ -866,28 +885,46 @@ endpoint without duplicating endpoint URLs even when specifying multiple
 linked resources. This pattern encourages polymorphic mediators, which
 improves overall privacy across the IID ecosystem.
 
-# Auxilary Technologies
-The following technologies comprise, with IIDs, a coherent architecture 
-for decentralized control of digital assets.
 
-## Verifiable Credentials
+EXAMPLE 4: A privacy-preserving IID document with zCap support
+----
+```json
+{
 
-## Executable Rights
+  "@context": ["https://www.w3.org/ns/did/v1",
+    "https://internft.org/ns/iid/v1"],
+  "id": "did:example:abc123",
 
-### Delegation, Authorization, and Caveats
+  "verificationMethod": [{
+    "id": "did:example:abc123i#keys-1",
+    "type": "Ed25519VerificationKey2020",
+    "controller": "did:example:abc123",
+    "publicKeyMultibase": "zH3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+  }],
 
-### Authorization Capabilities
+  "authentication": "did:example:abc123i#keys-1",
+  "capabilityDelegation" : "did:example:abc123i#keys-1",
+  "capabilityInvocation" : "did:example:abc123i#keys-1",
 
-### Secure ECMAScript
+  "service": [{
+    "id":"did:example:abc123#mediator",
+    "type": "polymorphicMediator2021",
+    "serviceEndpoint": "http://8zd335ae47dp89pd.onion/iid/mediator/ did:example:abc123"
+  }],
 
-## Confidential Storage
+"linkedResource" : [{
+    "id": "did:ixo:abc123#resourceHashgraph",
+    "path": "did:ixo:abc123/resourceHashgraph",
+    "type": "hashgraph",
+    "rel":"attachments",
+    "proof": "afybeiemxf5abjwjbikoz4mcb3a3dla6ual3jsgpdr4cjr3oz",
+    "endpoint" : "did:example:abc123?service=mediator"
+  }]
 
-## Wallets
+}
+```
 
 
-Privacy Considerations
-======================
-Section TBD.
 
 How to create an IID Method
 ===========================
@@ -896,15 +933,22 @@ Section TBD.
 Terminology
 ===========
 
-1.  DIDs
+1. **DIDs** -- [[Decentralized Identifers]](#ref1). Cryptographically secured global 
+identifiers defined by the DID Core specification developed by the W3C.
 
-2.  DID-URLs
+2. **DID-URLs** -- An extended form of a DID with additional components such as **/path**,
+**?query**, and **#fragments** appended to a base DID.
 
-3.  DID documents
+3. **DID documents** -- A representation of the meta-data needed to securly interact with a
+ DID. Retreived by [[DID resolution]](#Resolution), DID Documents contain verification
+ relationship and methods, as well as service endpoints and other method-specific properties.
 
-4.  Resolution
+4. **Resolution** -- The process by which one retrieves or generates a DID Document for a
+given DID. Resolution and other DID operations are method-specific and may vary considerably
+depending on the design decisions of each particular method.
 
-5.  Dereference
+5. **Dereference**
+The process of retreiving a resource, given a URL. Once the DID for a DID-URL is resolved, the returned DID Document provides the information needed to retrieve the resource (if any) represented by the DID-URL.
 
 References
 ==========
@@ -914,15 +958,14 @@ Online at
 [[https://www.w3.org/TR/did-core/]](https://www.w3.org/TR/did-core/).
 Accessed February 15, 2021.
 
-<a id="ref2">[2]</a>  URIs RFC 3986
+<a id="ref2">[2]</a>  RFC 3986 Uniforn Resource Identifier (URI) : Generic Syntax. IETF. Online at [[https://tools.ietf.org/html/rfc3986]](https://tools.ietf.org/html/rfc3986). Accessed March 31, 2021
 
-<a id="ref3">[3]</a>  Multihash
+<a id="ref3">[3]</a>  Multihash. Multiformats.io. Online at [[https://multiformats.io/multihash/]](https://multiformats.io/multihash/). Access March 31, 2021
 
-<a id="ref4">[4]</a>  NFT-RFC-002
+<a id="ref4">[4]</a>  NFT-RFC-002 Use Cases and Requirements. InterNFT.org. Online at [[https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-002.md]](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-002.md)
 
-<a id="ref5">[5]</a>  NFT-RFC-008
+<a id="ref5">[5]</a>  NFT-RFC-008 Assertions. InterNFT.org. Online at [[https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-008.md]](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-008.md)
 
-<a id="ref6">[6]</a>  HTTP Range 14
+<a id="ref6">[6]</a>  HTTP Range-14. Wikipedia. Online at [[https://en.wikipedia.org/wiki/HTTPRange-14]](https://en.wikipedia.org/wiki/HTTPRange-14)
 
-<a id="ref7">[7]</a>  Token Taxonomy Framework https://github.com/InterWorkAlliance/TokenTaxonomyFramework/blob/main/token-taxonomy.md 
-
+<a id="ref7">[7]</a>  Token Taxonomy Framework. Interwork Alliance. Online at [[https://github.com/InterWorkAlliance/TokenTaxonomyFramework/blob/main/token-taxonomy.md]](https://github.com/InterWorkAlliance/TokenTaxonomyFramework/blob/main/token-taxonomy.md)
