@@ -16,7 +16,7 @@ there must be a  process for verifying the assertions which are made about these
 or virtual resources, to determine if the assertions are both true and positively 
 correlated with the resource.
 
-Relevant use cases, as described in [NFT-RFC-002](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-002.md), for reference: [Access Tokens (Section 2.2)] (https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-002.md#22-financing-tokens), 
+Relevant use cases, as described in [NFT-RFC-002](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-002.md), for reference: [Access Tokens (Section 2.2)](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-002.md#22-financing-tokens), 
 [Impact Tokens (Section 2.3)](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-002.md#23-impact-tokens), and [Quality Carbon Credits (Section 4.1)](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-002.md#41-quality-carbon-credits).  
 
 For example an industrial company may make claims that it has verifiably reduced its carbon 
