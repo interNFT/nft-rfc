@@ -60,9 +60,11 @@ Interchain NFT + Metadata RFPs may be used in full or in part, at any stage of t
 
 # NFT-RFC Proposals Register
 
-* NFT-RFC-001 Specification Standard for Interchain NFTs and Metadata
-* NFT-RFC-002 Use Cases and Requirements Working Document
-* NFT-RFC-003 NFT Interface
-* NFT-RFC-004 interNFT Standard
-* NFT-RFC-005 NFT Rights
-* NFT-RFC-007 NFT Layers
+* [NFT-RFC-001 Specification Standard for Interchain NFTs and Metadata](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-001.md)
+* [NFT-RFC-002 Use Cases and Requirements Working Document](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-002.md)
+* [NFT-RFC-003 NFT Interface](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-003.md)
+* [NFT-RFC-004 interNFT Standard](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-004.md)
+* [NFT-RFC-005 NFT Rights](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-005.md)
+* [NFT-RFC-006 NFT Identifiers (IIDs)](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-006.md)
+* [NFT-RFC-007 NFT Layers](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-007.md)
+* [NFT-RFC-008 NFT Assertions](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-008.md)
