@@ -240,7 +240,7 @@ The original specification for URLs was RFC1738, which has been
 deprecated in favor of RFC 3986 which defines URIs as a generalization
 of URLs. However, the most recent work from the WHATWG advocates for URL
 over URI
-[[https://url.spec.whatwg.org/\#url-apis-elsewhere]{.underline}](https://url.spec.whatwg.org/#url-apis-elsewhere)
+https://url.spec.whatwg.org/#url-apis-elsewhere
 
 > Standardize on the term URL. URI and IRI \[Internationalized Resource
 > Identifier\] are just confusing. In practice a single algorithm is
@@ -354,13 +354,12 @@ coherent manner.
 Their purview also extends into user-friendly names as well as impacts
 on wallet design.
 
-So far, this group recognizes the work of Chain Agonistic Improvement
-Protocols
-([[http://github.com/ChainAgnostic]{.underline}](http://github.com/ChainAgnostic)),
+So far, this group recognizes the work of [Chain Agonistic Improvement
+Protocols](http://github.com/ChainAgnostic),
 which we discuss next.
 
 More information can be found at
-[[https://hackmd.io/\@okwme/ux-wg]{.underline}](https://hackmd.io/@okwme/ux-wg)
+https://hackmd.io/@okwme/ux-wg
 
 CAIP 2 and CAIP 19
 ------------------
@@ -369,11 +368,9 @@ The Chain Agnostic Standards Alliance is a collection of working groups
 dedicated blockchain protocol-agnostic standards. CASA also publishes
 Chain Agnostic Improvement Proposals which describe standards created by
 the different working groups. Of particular note in the development of
-this specification is CAIP 19 Asset Type and Asset ID Specification
-([[https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-19.md]{.underline}](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-19.md))
-as it directly applies to on-chain assets like NFTs, and CAIP 2
-Blockchain ID Specification
-([[https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-2.md]{.underline}](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-2.md))
+this specification is [CAIP 19 Asset Type and Asset ID Specification](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-19.md))
+as it directly applies to on-chain assets like NFTs, and [CAIP 2
+Blockchain ID Specification](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-2.md))
 which is used by CAIP 19 to identify different blockchains.
 
 Our goal is to support and leverage these CAIP proposals as much as
@@ -385,7 +382,7 @@ ATOM) and an asset ID (for non fungible token) in a human-readable,
 developer and transaction friendly way.
 
 CAIP-19 identifiers have the following syntax (from
-[[https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-19.md]{.underline}](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-19.md)):
+https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-19.md):
 
 > **asset\_id**: **asset\_type** + \"/\" + **token\_id**
 >
@@ -401,7 +398,7 @@ CAIP-19 identifiers have the following syntax (from
 > **asset\_reference**: \[-a-zA-Z0-9\]{1,47}
 >
 > From
-> [[https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-2.md]{.underline}](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-2.md)
+> https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-2.md]
 >
 > **chain\_id**: **namespace** + \":\" + **reference**
 >
@@ -445,9 +442,8 @@ It also has some notable divergence from DIDs:
 Decentralized Identifiers
 =========================
 
-Decentralized Identifiers (DIDs) are a standards-track specification
+[Decentralized Identifiers (DIDs)](https://www.w3.org/TR/did-core/) are a standards-track specification
 under development at the World Wide Web Consortium.
-[[https://www.w3.org/TR/did-core/]{.underline}](https://www.w3.org/TR/did-core/)
 They are \"a new type of globally unique identifier designed to enable
 individuals and organizations to generate our own identifiers using
 systems we trust, and to prove control of those identifiers
@@ -738,7 +734,7 @@ which might describe in great detail a range of benefits that accompany
 the basic rights of the token.
 
 **Assertions**: Verifiable credentials, verified claims, claim tokens
-as described in NFT-RFC-008. This allows arbitrary, yet verifiable
+as described in [NFT-RFC-008](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-008.md). This allows arbitrary, yet verifiable
 attestations to be made either about the asset or about the resources
 defined by IID references. The attributes represented in these claims
 can be retrieved via the NFT interface using a query by example (graph
