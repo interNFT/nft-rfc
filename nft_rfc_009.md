@@ -31,7 +31,7 @@ Identifiers are needed to refer to both on-chain and off-chain
 resources. On-chain digital assets require a cryptographically secure
 mechanisms for referring to the asset and to prove control or ownership of the asset,
 without reliance on a trusted third party.
-
+All on-chain digital assets MUST have a unique identifier which can be dereferenced to locate the asset as a resource located in a specific chain namespace.
 We refer to this new class of identifiers as Interchain Identifiers (IIDs).
 Interchain Identifiers SHOULD be appropriate for
 identifying and referring to any on-chain asset. Including smart contracts, fungible tokens,
