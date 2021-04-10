@@ -73,7 +73,7 @@ Content Identifiers (CIDs) provide robust verifiability and enable resources to 
 
 Implementing IIDs allows tokenized digital assets to be:
 1. Identified as unique digital assets that belong to a specific class of tokens. 
-2. Identify resources associated with that NFT
+2. Linked to verifiable on-chain and off-chain resources.
 3. Accorded rights in relation to both the token and its linked resources. Including executable rights, which may be issued and delegated off-chain using a mechanism such as Authorization Capabilities (zCaps), to access, invoke and transact with specific on-chain or off-chain services.
 4. Afforded privacy in relation to the token's metadata. Including what the token represents, the associated services which can be invoked, and the resources which are linked to the token.
 
