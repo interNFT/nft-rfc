@@ -74,26 +74,19 @@ Content Identifiers (CIDs) provide robust verifiability and enable resources to 
 Implementing IIDs allows tokenized digital assets to be:
 1. Identified as unique digital assets that belong to a specific class of tokens. 
 2. Identify resources associated with that NFT
-
-3. Exercise rights related to those resources using cryptography anchored to the NFT
-
-IIDs allow these functions a manner that addresses the privacy
-requirements for such references, with flexible support for use cases
-that need to make different choices. Our approach offers a robust,
-flexible, and capable identifier mechanism for NFTs, and on-chain
-assets, of all types.
+3. Accorded rights in relation to both the token and its linked resources. Including executable rights, which may be issued and delegated off-chain using a mechanism such as Authorization Capabilities (zCaps), to access, invoke and transact with specific on-chain or off-chain services.
+4. Afforded privacy in relation to the token's metadata. Including what the token represents, the associated services which can be invoked, and the resources which are linked to the token.
 
 Use Cases
 =========
 
-This specification was designed for Non-Fungible Tokens. NFT-RFC-002
-[[4]](#ref4) describes the range of types of tokens as well as several detailed
-user stories covered by this work. NFT-RFC-008 [[5]](#ref5) describes how one
-might apply IIDs, Verifiable Credentials, and Authorization Capabilities to define,
-authorize, issue, use, and sell NFT-based Renewable Energy Certificates
-(RECs) according to an REC 2021 standard.
-
-Throughout this document we use the REC2021 use case for examples. In summary:
+The IID specification was designed to address the requirements for Non-Fungible Token (NFT) use-cases, which are described in NFT-RFC-002.
+[[4]](#ref4).
+The specific use-case of tokenizing Renewable Energy Certificates (RECs), described in NFT-RFC-008 [[5]](#ref5) demonstrates how IIDs can be used together with DID-related W3C specifications for
+Verifiable Credentials (VCs) and Authorization Capabilities (zCaps), to define a class of tokens (REC-2021),
+authorize the issuance of verifiable credentials, verify claims of renewable energy production, and then mint and trade Renewable Energy Certificates as NFTs. With accorded rights and linked resources.
+Throughout this document we use the REC2021 use case for examples. 
+In summary:
 
 1. The UN creates a token template for RECs.
 2. The UN publishes that token template, resuling in an IID for the new class.
@@ -105,10 +98,10 @@ Verifiable Credentials
 to known, qualified verifiers.
 5. The UN delegates
 
-   a) the ability to create Certification Reports (with certain
+   a) the capability to create Certification Reports (with certain
 constraints) and
 
-   b) the ability to mint REC2021 tokens (with certain constraints)
+   b) the capability to mint REC2021 tokens (with certain constraints)
 
    to known, qualified certifiers.
 6. A renewable energy producer, HydroElec, creates a Project Verified Credential 
