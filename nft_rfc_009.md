@@ -14,35 +14,33 @@ Abstract
 Interchain Identifiers (IIDs) are a family of DID methods for
 specifically designed to refer to on-chain assets, such as NFTs, fungible tokens, namespace records and wallets.
 Built on Decentralized Identifiers from the World Wide Web Consortium
-[[1]](#ref1), IIDs are 100% conformant DIDs; IIDs ***are*** DIDs and IID
-documents are DID documents. The IID specification also provides
-additional features designed for on-chain assets, such as the ability to
-verifiably yet privately associate arbitrary digital or real-world
-assets with the underlying IID Subject. IIDs also constrain compatible
-DID methods in particular ways, including a restriction on the DID
-Subject---IID Subjects MUST be on-chain resources. Any DID method that
-meets the requirements in this specification ***is*** an IID method, and
-its IIDs ***are*** DIDs. Any DID software that is conformant to the W3C
-specification SHOULD be able to work with IIDs and IID documents,
-although some IID-specific features may require additional support.
+[[1]](#ref1), IIDs are fully conformant DIDs and therefore ***are*** DIDs. IID
+documents are DID documents. The IID specification provides
+additional features which are purpose-designed for describing and interacting with on-chain assets. Such as Linked Resources, which enable
+arbitrary digital or real-world resources to be verifiably, but privately, associated with
+the digital asset, which is the IID Subject.
+When referring to an IID, it is implicit that this identifies an on-chain asset. This constraint has the advantage that IID's are self-referential. Which overcomes the HTTP Range14 problem of DIDs which refer to resources that cannot be located at an end-point, such as a physical object. DID Methods which conform to this IID specification MUST resolve to a uniquely identified digital asset, within a unique blockchain namespace.
+Any software application using DIDs which conform to the W3C DID-Core
+specification SHOULD be able to operate with IIDs and IID documents.
+Although some IID-specific features may require additional support. For instance, to dereference Linked Resources.
 
 Introduction
 ============
 
 Identifiers are needed to refer to both on-chain and off-chain
-resources. Non-fungible tokens (NFTs) require a cryptographically secure
-means to both refer to specific tokens and prove control or ownership
+resources. On-chain digital assets require a cryptographically secure
+mechanisms for referring to the asset and to prove control or ownership of the asset,
 without reliance on a trusted third party.
 
-We refer to this new class of identifiers as Interchain Identifiers, or
-IIDs for short. We propose this new identifier would be appropriate for
-any on-chain asset, including smart contracts, fungible tokens, and
-non-fungible tokens.
+We refer to this new class of identifiers as Interchain Identifiers (IIDs).
+Interchain Identifiers SHOULD be appropriate for
+identifying and referring to any on-chain asset. Including smart contracts, fungible tokens,
+non-fungible tokens, namespace records, and wallets.
 
-IIDs build on a foundation of global identifiers dating back to Uniform
+IIDs build on a foundation of Internet identifiers, dating back to Uniform
 Resource Locators and Uniform Resource Identifiers [[2]](#ref2), which are the
-foundation of the World Wide Web. URLs and URIs allow for different
-schemes that specify particular mechanisms for interpreting and applying
+foundation of the World Wide Web. URIs allow for different
+to specify the mechanisms for interpreting and applying
 the rest of the identifier. For example,
 ```http://example.com``` specifies a web-based resource that can be 
 retrieved using the hypertext transfer protocol (http) and ```
@@ -50,36 +48,31 @@ mailto:joe@example.com``` specifies a resource that can receive email
 messages using the SMTP protocol.
 
 IIDs are Decentralized Identifiers (DIDs), which build on URIs and URLs 
-to provide a class of identifiers one can verify without reliance on a
+to provide a class of identifiers which can verified without reliance on a
 trusted third party. DIDs specifically support cryptographic
-verification methods like public/private key cryptography on any number
-of curves, which in turn are used for verification relationships like
-authentication, assertion, capability delegation, and capability
-invocation. When one uses a DID for those relationships, a verifying
-party can use cryptographic material associated with the DID to verify
-the use is appropriate. DID-URLs extend the base DID syntax to support 
+verification methods, such as public-private cryptographic keys derived from any number
+of curves. These keys are used to establish verification relationships for the purpose of
+authentication, assertion, capability delegation, or capability
+invocation. A DID Method establishes these verification relationships in a way that each cryptographic method is associated with its specific purpose. 
+DID-URLs extend the base DID syntax to support 
 ```/path```, ```?query```, and ```#fragment``` parts. IIDs use the 
-```/path``` and ```#fragment``` parts of URLs to refer to IID References 
+```/path``` and ```#fragment``` parts of URLs for IID References 
 and IID Resources.
 
-We describe how IIDs and DIDs relate in section [IIDs as DIDs](#IIDs-as-DIDs).
+The relationship between IIDs and DIDs is further described in the [IIDs as DIDs](#IIDs-as-DIDs) section.
 
 IIDs also provide a consistent, verifiable approach for referring to
-off-chain resources, whether digital, real-world, or conceptual. In this
-role, IIDs rely on content-based identifiers and content-based
-addressing systems, where a hash of the digital asset is used to
-unambiguously verify the asset is the intended resource. Standards like
+off-chain resources. Whether these resources are digital, physical, or conceptual. To achieve this
+IID methods SHOULD use content-based identifiers and content-based
+addressing systems, in which a hash of linked resource is used to
+unambiguously verify the resource. Standards such as
 multihash [\[3\]](#ref3) provide for a wide range of different hash algorithms
-and representations. Approaches using merkle trees can turn hashes into
-a hashgraphs, allowing an arbitrary number of resources to be
-independently verified without revealing even the number of those assets
-publicly. These content identifiers can provide robust verifiability no
-matter where such resources might be located or retrieved.
+and representations.
+Using mechanisms such as Hashgraphs enables an arbitrary number of verifiable resources to be linked to a digital asset, without even revealing the number of resources.
+Content Identifiers (CIDs) provide robust verifiability and enable resources to be addressed without path-dependency. These mechanisms enable rich data to be associated with digital resources, without compromising privacy.
 
-Specifically for NFTs, IIDs allow you to
-
-1. Identify individual NFTs as well as their token class
-
+Implementing IIDs allows tokenized digital assets to be:
+1. Identified as unique digital assets that belong to a specific class of tokens. 
 2. Identify resources associated with that NFT
 
 3. Exercise rights related to those resources using cryptography anchored to the NFT
