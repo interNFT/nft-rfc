@@ -12,7 +12,7 @@ Abstract
 ========
 
 Interchain Identifiers (IIDs) are a family of DID methods for
-blockchain-based assets such as tokens, smart contracts, and addresses.
+specifically designed to refer to on-chain assets, such as NFTs, fungible tokens, namespace records and wallets.
 Built on Decentralized Identifiers from the World Wide Web Consortium
 [[1]](#ref1), IIDs are 100% conformant DIDs; IIDs ***are*** DIDs and IID
 documents are DID documents. The IID specification also provides
