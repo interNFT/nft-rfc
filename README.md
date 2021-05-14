@@ -68,3 +68,4 @@ Interchain NFT + Metadata RFPs may be used in full or in part, at any stage of t
 * [NFT-RFC-006 NFT Identifiers (IIDs)](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-006.md)
 * [NFT-RFC-007 NFT Layers](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-007.md)
 * [NFT-RFC-008 NFT Assertions](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-008.md)
+* [NFT-RFC-009 Interchain Identifiers](https://github.com/interNFT/nft-rfc/blob/main/nft-rfc-009.md)
