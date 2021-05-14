@@ -1,4 +1,4 @@
-# NFT+Metada Requests for Comments (NFT-RFC)
+# NFT+Metadata Requests for Comments (NFT-RFC)
 The process of developing Interchain Standards for NFTs and Metadata (NFT) MUST allow all proposals and recommendations to proceed through an open submission and *Request for Comments* review process.
 This process should follow well-established norms and good practices for developing technical recommendations and implementation options for open technical standards.
 
