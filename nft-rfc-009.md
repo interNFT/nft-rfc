@@ -1,4 +1,4 @@
----
+﻿---
 nft-rfc: 9
 title: Interchain Identifiers
 stage: draft
@@ -8,64 +8,62 @@ created: 2021-03-18
 modified: 2021-04-14
 ---
 
-Abstract
-========
 
-Interchain Identifiers (IIDs) are a family of Decentralized Identifier methods which are purpose-designed for the purpose to identify, refer to and
-interact with digital assets within blockchain namespaces. 
-We define all on-chain assets as Tokens. Which may include any type of tokens, such as NFTs, fungible tokens, tokenized namespace records, or tokenized wallets.
+# Abstract
 
-The IID specification builds on the Decentralized Identifier (DID) core specification from the World Wide Web Consortium (W3C)
-[[1]](#ref1). IIDs are fully conformant DIDs and therefore ***are*** DIDs. IID Documents ***are*** DID documents.
+Interchain Identifiers (IIDs) are a family of Decentralized Identifier methods which are purpose-designed to identify, refer to, and interact with digital assets within blockchain namespaces.
 
-When inspecting or referring to an IID, it is implicit that the IID identifies a tokenized asset. This creates specific expectations about the uniqueness of the 
-asset within a chain namespace and provides additional features for describing and interacting with the asset. 
-This constraint has the advantage that IID's are self-referential. It therefore also overcomes the HTTP Range14 problem of DIDs referring to resources, 
-such as physical objects, which cannot be located and dereferenced at a URI end-point.
+The IID specification builds on the Decentralized Identifier (DID) core specification from the World Wide Web Consortium (W3C) [1]. IIDs are fully conformant DIDs and therefore are DIDs. IID Documents are DID documents. Unlike DIDs, IIDs only reference on-chain assets&mdash;which we will refer to as tokens&mdash;but should be taken as any type of tokens, such as NFTs, fungible tokens, tokenized namespace records, or other on-chain assets.
 
-New features of IIDs include Linked Resources, Blockchain Service Endpoints, and Accorded Rights. Which together with the core DID propoerties
-enable versatile composability of the behaviours and properties of token metadata.
+By restricting IIDs to on-chain assets, we create a new class of identifier uniquely suited to the requirements of tokens and other chain-native components. IID methods can be developed for any compatible blockchain, making them suitable for interoperable representations of tokens (and the cryptography that secures those tokens) regardless of the underlying chain.
 
-* The ***Linked Resources*** property enables any digital or real-world resources to be verifiably, but privately, associated with a token.
-* The ***Service Endpoint*** property of an IID can point to any service offered by the blockchain in which the token is located, or services that can be accessed through 
-the Inter-Blockchain Communication (IBC) protocol, in addition to off-chain services.
-* The ***Accorded Rights*** property may afford an asset owner/controller both machine-executable rights and/or rights which are mediated through institutional mechanisms.   
+IIDs also introduce a few new features&mdash;conformant extensions to the DID Core specification&mdash;that provide for privacy-respecting options for the full range of expected token functionality, including Linked Resources, On-chain Service Endpoints, and Accorded Rights.
 
-DID Methods which conform to this IID specification MUST resolve to a uniquely identified digital asset, within a unique blockchain namespace.
-Any software application using DIDs that conform to the W3C DID-Core specification SHOULD be able to inter-operate with IIDs and IID documents.
-Although some IID-specific features may require additional support. For instance, to dereference Linked Resources.
+DID Methods which conform to the IID specification resolve to DID Document representing how to securely interact with a uniquely identified digital asset, within a unique blockchain namespace. Because IIDs are DIDs, software applications that are conformant with the W3C specification will be able to inter-operate with IIDs and IID documents, although some IID-specific features may require additional tooling.
+
+
 
 Introduction
 ============
 
-Decentralized Identifiers (DIDs) are a new Web standard for identifying and referring to any identifiable subject in both the digital or physical realm.
-Every uniquely identifiable resource which is encoded as a digital asset within a blockchain namespace MUST have a unique identifier. 
-A digital asset's identifier SHOULD dereference to locate the asset and its associated resources within a chain namespace. Enabling the asset to be 
-addressed across namespaces, including from the Web. We refer to this new class of identifiers as Interchain Identifiers (IIDs).
-Any type of on-chain asset SHOULD be identifiable using an IID. Including smart contracts, fungible tokens, non-fungible tokens, namespace records, and account wallets.
+Decentralized Identifiers (DIDs) are a new Web standard for secure identifiers without dependency on a trusted third party. DIDs are used to reference ANY subject, including people, organizations, physical locations, and digital assets.
 
+IIDs define a family of DID methods used tolocate on-chain assets and their associated resourcess, allowing the asset to be addressed and used across namespaces: from the web, from another chain, or from any DID compliant wallet or application.
+
+IID Methods are the secret to customizing DIDs to meet the need for secure interactions with any on-chain assets.
+
+## Built on URIs
 IIDs build on a foundation of Internet identifiers, dating back to Uniform Resource Locators and Uniform Resource Identifiers [[2]](#ref2), which are the
 foundation of the World Wide Web. 
+
 URIs allow for different mechanisms to be used for interpreting and applying the syntax of the identifier. 
-For example, ```http://example.com``` specifies a web-based resource that can be retrieved using the hypertext transfer protocol (http).
-Whereas ```mailto:joe@example.com``` specifies a resource that can receive email messages using the SMTP protocol.
-Decentralized Identifiers (DIDs) build on URIs and URLs to provide a new class of URIs which can verified without reliance on a
-trusted third-party. DIDs specifically support cryptographic verification methods, such as public-private cryptographic keys derived from various curves. 
-These keys are used to establish verification relationships for the purpose of authentication, assertion, capability delegation, or capability
-invocation. 
-A standard format DID Document object defines these verification relationships, together with the specific cryptographic method associated with each verification purpose. 
+
+For example, the URL ```http://example.com``` specifies a web-based resource that can be retrieved using the hypertext transfer protocol (http).
+
+Whereas the URL ```mailto:joe@example.com``` specifies a resource that can receive email messages using the SMTP protocol.
+
+Decentralized Identifiers (DIDs) build on URIs and URLs to provide a new class of URIs which afford secure interaction with the controller of that identifier, without reliance on a
+trusted third-party.
+
+## DID and IID Documents
+
+This is a DID:
+```
+did:example:abc123
+```
+That DID (if it weren't just an example) would resolve to a DID Document describing how to securely interact with the controller of that DID. Example documents follow.
+
+All DIDs *resolve* to their associated **DID Document**, which contain the verification methods and relationships and the service endpoints that secure interaction with the controller of the asset.
+
+**Verification Methods**, such a public key, may be used to establish verification relationships for the purpose of authentication, assertion, capability delegation, or capability
+invocation.
+
+A standard format DID Document object defines these **verification relationships**, together with the specific cryptographic method associated with each verification purpose.
+
 DID-URLs extend the base DID syntax to support ```/path```, ```?query```, and ```#fragment``` parts. 
 IIDs use the ```/path``` and ```#fragment``` parts of URLs for IID References and IID Resources.
 
 The relationship between IIDs and DIDs is further described in the [IIDs as DIDs](#IIDs-as-DIDs) section.
-
-IIDs also provide a consistent, verifiable approach for referring to off-chain resources. Whether these resources are digital, physical, or conceptual. 
-To achieve this, IID methods SHOULD use content-derived identifiers and MAY use content-derived addressing systems, in which the cryptographic hash of a linked resource is used to
-unambiguously verify the resource. 
-Standards such as multihash [\[3\]](#ref3) provide a wide range of hashing algorithm options and representations which can be used for this purpose.
-Mechanisms such as Hashgraphs enable an arbitrary number of verifiable resources to be linked to a digital asset, without revealing the number or content of these resources.
-Content Identifiers (CIDs) provide robust verifiability and enable resources to be addressed without path-dependency. 
-Both these mechanisms enable rich data to be associated with digital resources, without compromising privacy.
 
 ### Tokenized digital assets
 The IID specification defines how tokenized digital assets can be:
@@ -76,16 +74,18 @@ For accessing, invoking and transacting with both on-chain or off-chain services
 4. Afforded privacy in relation to the token's metadata. Including what the token represents, information abourt its linked resources, and the services which can be invoked.
 5. Transferred with verifiable provenance across registry systems. 
 
-Use Cases
-=========
+# Use Cases
 
 The IID specification was primarily designed to address the use-case requirements for Non-Fungible Tokens (NFT), which are described in NFT-RFC-002.
 [[4]](#ref4). However, this specification is applicable to all types and classes of tokens, as well as other on-chain digital assets.
 
-### Renewable Energy Certificate NFTs
+## Renewable Energy Certificate NFTs
 The specific use-case of tokenizing Renewable Energy Certificates (RECs), as described in NFT-RFC-008 [[5]](#ref5), will be used to describe how IIDs are implemented 
-to define a class of tokens (REC-2021). Operationalized within a secure system for certifying a renewable energy project to create renewable energy production claims 
-from smart meters. These claims, together with the project's credentials, are submitted for evaluation by an authorized verification agent. 
+to define a class of tokens (REC-2021).
+
+This use case describes how a centralized authority like the UN Climate Change Agency can use a decentralized token platform to issue  digital Renewable Energy Certificates as tradeable NFTs.
+
+Operationalized within a secure system for certifying a renewable energy project to create renewable energy production claims from smart meters. These claims, together with the project's credentials, are submitted for evaluation by an authorized verification agent. 
 Who has the necessary digital credentials and authorization, delegated from the UNCCC, to issue a verification report and to pass on a delegated authorization to the 
 renewable energy producer. For the producer to invoke minting of a UNCCC-standard Renewable Energy Certificate NFT. Which includes as token metadata the producer's credentials, 
 claims and verification report, as Linked Resources. Together with Accorded Rights, in the form of a delegated Authorization Capability, associated with the token 
@@ -115,92 +115,6 @@ These are the steps for minting a Renewable Energy Certificate NFT:
 11. Energy Purchasers buy the derivative KWh Tokens from HydroElec to exchange for energy supply. They are authorized by HydroElec to access and inspect the credentials, claims evidence and verification report linked resources, which are made available through the specified confidential data store service end-point.
 12. HydroElec, after selling all their KWh Tokens, invokes the service of the blockchain to retire the REC NFT. 
 
-Lifecycle of an NFT
--------------------
-The following describes the lifecycle of any on-chain token, and specifically non-fungible tokens.
-1. [Classify](#Classify)
-1. [Mint](#Mint)
-1. [Use](#Use)
-1. [Sell](#Sell)
-1. [Buy](#Buy)
-1. [Send](#Derive)
-1. [Derive](#Derive)
-1. [Lock](#Derive)
-1. [Burn](#Derive)
-
-### **Classify**
-
-Using a standard such as the Token Taxonomy Framework [[7]](#ref7), a Token Template is created to define the type, properties and behaviors of a token class.
-Token Templates MUST be specified in a format that can be interpreted by the blockchain on which the tokens will be minted. 
-The available services of the blockchain prescribe which behaviors the token can have. 
-The template MAY define conditions for invoking token services –such as the block height after which the token becomes transferrable. Enabling composability of tokens. 
-Templates MAY be inherited.
-The properties of a token class and a token instance MAY be defined as mutable or immutable. Properties include:
-* Controller DID
-* Verification Relationships
-* Verification Methods
-* Service Endpoints
-* Linked Resources
-* Accorded Rights
-
-### **Mint**
-The creator of an identified Token Template, or a party with a delegated authorization, may mint tokens within the token template class.
-Each token instance inherits the properties and behaviors defined by the token class template. 
-This MAY include default values for some properties.
-
-### **Use**
-A token MAY be viewed in a wallet application which enables the token owner/controller to exercise the accorded rights of the token –including the executable 
-rights to invoke token services and off-chain services. 
-Executing these rights requires the user to demonstrate that they have cryptogaphic proof of authority. Either by 
-proving ownership (using the chain's control architecture), or by demonstrating that they have a
-delegated authority, using an authorization framework such as ACLs or Object Capabilities.  
-
-### **Sell**
-Offering a token for sale SHOULD require the seller to provide a mechanism for potential buyers to
-inspect all Linked Resources. After purchase, the new token owner SHOULD be given access to, or provided copies of, the token's Linked Resources. 
-The services used to sell a token may include custom services, such an auction mechanism. 
-The available services, together with any conditions (such as block-height before transfer) may be specified in the service endpoint property of the token's IID Document. 
-Or the services of *any* digital asset marketplace that understands IIDs could be used. 
-For private token properties –such as Linked Resources which are obscured by a hash or hashgraph– to be made accessible to token purchasers, 
-the token seller SHOULD either:
-  1. Provide a service endpoint in the IID Document for the resources to be retrieved and verified by their hash checksum. 
-  2. Enable retrieval of the resources through another mechanism which is negotiated between the seller and purchaser.
-For non-sensitive data, resources MAY be included inline publicly in the IID Document properties. However, the privacy implications MUST be carefully considered.
-
-### **Buy**
-A token purchaser must be able to access and inspect any Linked Resources, which SHOULD be verified by their hash checksum. 
-This may require working with the seller to retrieve the resources.
-The token purchase may be facilitated by any on-chain transfer mechanisms or marketplaces, including class- and token-specific services.
-
-### **Send**
-The owner of a token SHOULD be able to unilaterally make a change in the ownership of the token
-to another party. This may be in consideration for off-chain remuneration, but the chain service for
-transferring ownership shoould not have to have visibility of the transaction.
-
-### **Derive**
-A token may be locked or burned through to create derivative tokens.
-This atomically mints new tokens of an arbitrary class and relationship to the parent token. 
-Derived tokens may be fungible or non-fungible; they may share an equal ownership right 
-in an indivisible whole; or may represent a specific interest –such as a specific 
-table reservation in a restaurant.
-Accorded Rights for the derivative token could be entirely different to the rights carried by the parent token. 
-This Derive functionality may allow for any number of derivation patterns.
-
-### **Burn**
-Burning an NFT permanently removes it from existence. Although it is, inevitably, stored 
-on-chain, the token may be recorded as destroyed and irrevocably gone. Burning a token is 
-a degenerate case of transferring a token to a destination account which does not exist.
-
-
-### **Lock**
-Locking a token may be useful for various cross-chain functionality, securing the token
-to prevent its sale on the origin chain. Specific cryptographic proofs may be required to 
-unlock the token. Locking is a subatomic step in deriving tokens from a parent token.
-
-At any point in this lifecycle, authorizations may be delegated with or without caveats. 
-For example, the current token may be authorized to sell an NFT, with the caveats this must achieve a minimum price and before a specified block height. 
-For these kinds of operations, Authorization capabilities (zCaps) SHOULD be used, as zCaps implementations already support
-DIDs and will be able to support IIDs.
 
 Requirements for the IID specification
 ======================================
@@ -923,3 +837,18 @@ Accessed February 15, 2021.
 <a id="ref6">[6]</a>  HTTP Range-14. Wikipedia. Online at [[https://en.wikipedia.org/wiki/HTTPRange-14]](https://en.wikipedia.org/wiki/HTTPRange-14)
 
 <a id="ref7">[7]</a>  Token Taxonomy Framework. Interwork Alliance. Online at [[https://github.com/InterWorkAlliance/TokenTaxonomyFramework/blob/main/token-taxonomy.md]](https://github.com/InterWorkAlliance/TokenTaxonomyFramework/blob/main/token-taxonomy.md)
+
+
+
+
+
+
+IIDs also provide a consistent, verifiable approach for referring to off-chain resources. Whether these resources are digital, physical, or conceptual.
+
+To achieve this, IID methods SHOULD use content-derived identifiers and MAY use content-derived addressing systems, in which the cryptographic hash of a linked resource is used to unambiguously verify the resource.
+
+Standards such as multihash [\[3\]](#ref3) provide a wide range of hashing algorithm options and representations which can be used for this purpose.
+
+Mechanisms such as Hashgraphs enable an arbitrary number of verifiable resources to be linked to a digital asset, without revealing the number or content of these resources.
+Content Identifiers (CIDs) provide robust verifiability and enable resources to be addressed without path-dependency. 
+Both these mechanisms enable rich data to be associated with digital resources, without compromising privacy.
