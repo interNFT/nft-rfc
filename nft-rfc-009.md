@@ -1,4 +1,4 @@
-﻿---
+---
 nft-rfc: 9
 title: Interchain Identifiers
 stage: draft
