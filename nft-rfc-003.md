@@ -122,7 +122,7 @@ Wallet interface {
   // ReceiveNFT adds the given array of NFT to the wallet and returns an error if the receive operation is conflicted
   ReceiveNFT([]NFT) error
 
-  // ReceiveNFT removes the given array of NFT from the wallet and returns an error if the send operation is conflicted
+  // SendNFT removes the given array of NFT from the wallet and returns an error if the send operation is conflicted
   SendNFT([]NFT) error
 }
 ```
